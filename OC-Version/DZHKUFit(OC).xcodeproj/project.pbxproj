@@ -21,6 +21,7 @@
 		C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CAE1F123663005EAC8F /* DZExerciseViewController.m */; };
 		C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */; };
 		C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */; };
+		D26092A91F135AAB00AB0C60 /* DZTableSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = D26092A81F135AAB00AB0C60 /* DZTableSectionData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodTableViewController.m; sourceTree = "<group>"; };
 		C6921CBB1F12383B005EAC8F /* DZPersonalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalTableViewController.h; sourceTree = "<group>"; };
 		C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalTableViewController.m; sourceTree = "<group>"; };
+		D26092A71F135AAB00AB0C60 /* DZTableSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTableSectionData.h; sourceTree = "<group>"; };
+		D26092A81F135AAB00AB0C60 /* DZTableSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTableSectionData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 		C6921CB21F12369E005EAC8F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D26092A71F135AAB00AB0C60 /* DZTableSectionData.h */,
+				D26092A81F135AAB00AB0C60 /* DZTableSectionData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -311,7 +316,6 @@
 				TargetAttributes = {
 					C6921C6F1F122536005EAC8F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = XU79TY472J;
 						ProvisioningStyle = Automatic;
 					};
 					C6921C881F122536005EAC8F = {
@@ -386,6 +390,7 @@
 				C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */,
 				C6921CA81F122ED0005EAC8F /* DZMainTabBarViewController.m in Sources */,
 				C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */,
+				D26092A91F135AAB00AB0C60 /* DZTableSectionData.m in Sources */,
 				C6921C781F122536005EAC8F /* AppDelegate.m in Sources */,
 				C6921C751F122536005EAC8F /* main.m in Sources */,
 				C6921CAB1F12305C005EAC8F /* DZRecomViewController.m in Sources */,
@@ -473,7 +478,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREFIX_HEADER = "/Users/duozhao/Documents/MyProject/DZHKUFit(OC)/DZHKUFit(OC)/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DZHKUFit(OC)/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -519,7 +524,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/duozhao/Documents/MyProject/DZHKUFit(OC)/DZHKUFit(OC)/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/DZHKUFit(OC)/PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -537,7 +542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XU79TY472J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "DZHKUFit(OC)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Duo.DZHKUFit-OC-";
@@ -549,7 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XU79TY472J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "DZHKUFit(OC)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Duo.DZHKUFit-OC-";

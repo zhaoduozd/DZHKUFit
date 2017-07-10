@@ -10,10 +10,10 @@
 
 @interface DZFoodContentData : NSObject
 
-@property(nonatomic, strong) NSString *foodName;
-@property(nonatomic, strong) NSString *foodCalorie;
-@property(nonatomic, strong) NSString *foodFat;
-@property(nonatomic, strong) NSString *foodProtein;
-@property(nonatomic, strong) NSString *foodCarhdr;
+@property(nonatomic, copy) NSString *foodName;
+@property(nonatomic, copy) NSString *foodCalorie;
+@property(nonatomic, copy) NSString *foodFat;
+@property(nonatomic, copy) NSString *foodProtein;
+@property(nonatomic, copy) NSString *foodCarhdr;
 
 @end
