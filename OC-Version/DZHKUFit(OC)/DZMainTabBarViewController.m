@@ -26,11 +26,11 @@
     [super viewDidLoad];
     
     _Titles = @[@"推荐",@"运动",@"食物",@"我"];
-    _Icons = @[@"personal",@"personal",@"personal",@"personal"];
+    _Icons = @[@"recom",@"exercise",@"food",@"personal"];
     _ClassNames = @[@"DZRecomViewController",@"DZExerciseViewController",@"DZFoodTableViewController",@"DZPersonalTableViewController"];
 
     [self addChildVC];
-    self.tabBar.tintColor = [UIColor purpleColor];
+    self.tabBar.tintColor = AppColor;
 }
 
 
@@ -45,7 +45,7 @@
         //nav.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",_Icons[i]]];
         
         // 导航栏背景色
-        [nav.navigationBar setBarTintColor:[UIColor magentaColor]];
+        [nav.navigationBar setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1]];
         [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]];
         
         
