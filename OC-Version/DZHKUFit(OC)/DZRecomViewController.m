@@ -10,96 +10,158 @@
 
 @interface DZRecomViewController ()
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIImageView *exerciseShow;
+@property (nonatomic, strong) UIScrollView *scrollRootView;
+@property (nonatomic, strong) UIView *exerciseRecom;
 @property (nonatomic, strong) UIImage *defaultImage;
-@property (nonatomic, strong) UILabel *erecomTitle;
-@property (nonatomic, strong) UILabel *frecomTitle;
 
 @end
 
 @implementation DZRecomViewController {
     double yPosition;
     double xDefaultPosition;
-    UIColor *fontDefaultColor;
-    UIColor *subViewColor;
-    UIColor *defaultBorderColor;
+    
     UIColor *backgroundColor;
+    UIColor *subViewBackgroundColor;
+    
+    UIColor *defaultBorderColor;
+    
+    UIColor *fontDefaultColor;
+    UIColor *fontDetailColor;
 }
 
 - (void)viewDidLoad {
-    yPosition = 0;
-    xDefaultPosition = 10;
-    backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1];
-    subViewColor = [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1];
-    fontDefaultColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1];
-    defaultBorderColor = [UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1];
     [super viewDidLoad];
-    [self setUI];
+    [self setDefaultColors];
+    [self setXYPosition];
+    [self setRootUI];
+    [self setUIElements];
 }
+
 
 #pragma -mark 自定义函数
-- (void)setUI {
-    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    _scrollView.backgroundColor = backgroundColor;
-    _scrollView.contentSize = CGSizeMake(DZScreenW, 2*DZScreenH);
-    [self.view addSubview:_scrollView];
-    [self setImageViewUI];
-    //[_scrollView addSubview: [self setRecomTitleUI:@"今日运动列表"]];
-    [_scrollView addSubview: [self setHorizontalScroll:100 andWidth:DZScreenW*1.5 andTitle:@"今日运动"]];
-    [_scrollView addSubview: [self setHorizontalScroll:300 andWidth:DZScreenW*1.5 andTitle:@"今日饮食"]];
-    //[_scrollView addSubview: [self setRecomTitleUI:@"今日饮食推荐"]];
+- (void)setDefaultColors {
+    
+    //set background colors
+    backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1];
+    subViewBackgroundColor = [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1];
+    
+    //set font colors
+    fontDefaultColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1];
+    
+    //set border colors
+    defaultBorderColor = [UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1];
+}
+
+- (void)setXYPosition {
+    xDefaultPosition = 5;
+    yPosition = 0;
+}
+
+- (void)setRootUI {
+    _scrollRootView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+    _scrollRootView.backgroundColor = backgroundColor;
+    _scrollRootView.contentSize = CGSizeMake(DZScreenW, 2*DZScreenH);
+    [self.view addSubview:_scrollRootView];
+}
+
+- (void)setUIElements {
+    [self setExerciseRecomUI];
+    [self setFoodRecomUI];
+}
+
+- (void)setExerciseRecomUI {
+    //create exerciseRecom UIView
+    float titleHeight = 26;
+    float exerciseRecomHeight = DZScreenW * 0.6;
+    float exerciseListHeight = 70;
+    float thisHeight = titleHeight + exerciseRecomHeight + exerciseListHeight;
+    
+    _exerciseRecom = [[UIView alloc] init];
+    _exerciseRecom.frame = CGRectMake(0, 0, DZScreenW, thisHeight);
+    _exerciseRecom.backgroundColor = subViewBackgroundColor;
+    _exerciseRecom.layer.borderColor = defaultBorderColor.CGColor;
+    
+    //create UI elements in exerciseRecom
+    UILabel *recomTitle = [self recomTitleLabel:@"今日运动"];
+    UIImageView *exerciseView = [self exerciseShow];
+    UIScrollView *exerciseList = [self horizontalScrollWithWidth:DZScreenW Height:exerciseListHeight andTitle:@"exercise"];
+    
+    //add UI elements into exerciseRecom
+    [_exerciseRecom addSubview:recomTitle];
+    [_exerciseRecom addSubview:exerciseView];
+    [_exerciseRecom addSubview:exerciseList];
+    
+    //add exerciseRecom into Root View
+    [_scrollRootView addSubview:_exerciseRecom];
+}
+
+- (void)setFoodRecomUI {
 
 }
 
-- (void)setImageViewUI {
-    yPosition = DZScreenW * 0.6 + 5;
-    _defaultImage = [[UIImage alloc] init];
-    _defaultImage = [UIImage imageNamed:@"defaultPosition"];
-    _exerciseShow = [[UIImageView alloc] init];
-    _exerciseShow.frame = CGRectMake(0, 0, DZScreenW, DZScreenW*0.6);
-    //_exerciseShow.layer.borderColor = defaultBorderColor.CGColor;
-    //_exerciseShow.layer.borderWidth = 1;
-    _exerciseShow.image = _defaultImage;
-    [_scrollView addSubview:_exerciseShow];
-}
 
-- (UILabel *)setRecomTitleUI:(NSString *) textContent {
+//create custom views
+
+- (UILabel *)recomTitleLabel:(NSString *) textContent {
+    float labelHeight = 26;
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont fontWithName:@"Arial" size:12];
     label.text = textContent;
-    label.frame = CGRectMake(xDefaultPosition, 0, DZScreenW, 26);
+    label.frame = CGRectMake(xDefaultPosition, 0, DZScreenW, labelHeight);
     label.textColor = fontDefaultColor;
-    yPosition += 26;
+    
+    yPosition += labelHeight;
     return label;
 }
 
-- (UIScrollView *)setHorizontalScroll:(float) viewHeight andWidth:(float) viewWidth andTitle:(NSString *) recomTitle{
+- (UIImageView *)exerciseShow {
+    UIImageView *exerciseShow =[[UIImageView alloc] init];
+    
+    _defaultImage = [[UIImage alloc] init];
+    _defaultImage = [UIImage imageNamed:@"defaultPosition"];
+    
+    exerciseShow.frame = CGRectMake(-1, yPosition, DZScreenW+2, DZScreenW*0.6);
+    exerciseShow.layer.borderColor = defaultBorderColor.CGColor;
+    exerciseShow.layer.borderWidth = 1;
+    exerciseShow.image = _defaultImage;
+    
+    yPosition += DZScreenW * 0.6;
+    
+    return exerciseShow;
+}
+
+- (UIScrollView *)horizontalScrollWithWidth:(float) width Height:(float) height andTitle:(NSString *) title{
+    
+    float btnXPos = 5;
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     
-    scrollView.backgroundColor = subViewColor;
-    scrollView.frame = CGRectMake(0, yPosition, viewWidth, viewHeight);
-    scrollView.layer.borderColor = defaultBorderColor.CGColor;
-    scrollView.layer.borderWidth = 1;
-    [scrollView addSubview:[self setRecomTitleUI:recomTitle]];
+    scrollView.frame = CGRectMake(0, yPosition, width, height);
+    scrollView.backgroundColor = subViewBackgroundColor;
+    scrollView.contentSize = CGSizeMake(width*2, height);
     
-    [scrollView addSubview:[self maskArrangement:80 :48 :xDefaultPosition :26 backgroundImageName:@"defaultPosition" buttonName:@"运动"]];
+    for (int i = 0; i < 10; i++) {
+        [scrollView addSubview:[self buttonWithMaskWithButtonWidth:70 buttonHeight:48 xPos:btnXPos yPos:10 backgroundImageName:@"defaultPosition" buttonName:@"运动"]];
+        btnXPos += 74;
+    }
     
-    yPosition += viewHeight;
+    yPosition += height;
     return scrollView;
 }
 
-- (UIButton *)maskArrangement:(float) maskW :(float) maskH :(float) x :(float) y backgroundImageName:(NSString *) backImage buttonName:(NSString *) buttonName{
+- (UIButton *)buttonWithMaskWithButtonWidth:(float) width buttonHeight:(float) height xPos:(float) x yPos:(float) y backgroundImageName:(NSString *) backImage buttonName:(NSString *) buttonName{
+    
     UIButton *button = [[UIButton alloc] init];
-    UIImage *buttonBackground = [[UIImage alloc] init];
-    buttonBackground = [UIImage imageNamed:backImage];
-    button.frame = CGRectMake(x, y, maskW, maskH);
-    [button setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
     CALayer *maskLayer = [[CALayer alloc] init];
-    maskLayer.frame = CGRectMake(0, 0, maskW, maskH);
-    maskLayer.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5].CGColor;
+
+    button.frame = CGRectMake(x, y, width, height);
+    [button setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
     //[button setTitle:buttonName forState:UIControlStateNormal];
-    //button.titleLabel.textColor = [UIColor whiteColor];
+    [button.layer setMasksToBounds:YES];
+    [button.layer setCornerRadius:4.0];
+    
+    maskLayer.frame = CGRectMake(0, 0, width, height);
+    maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5].CGColor;
+    
     [[button layer] addSublayer:maskLayer];
     
     return button;

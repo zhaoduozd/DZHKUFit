@@ -10,6 +10,8 @@
 
 @implementation DZRecomTitleLabel
 
+- (void)viewDidLoad {
     
+}
 
 @end
