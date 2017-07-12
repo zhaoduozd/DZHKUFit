@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UIScrollView *scrollRootView;
 @property (nonatomic, strong) UIView *exerciseRecom;
+@property (nonatomic, strong) UIView *foodRecom;
 @property (nonatomic, strong) UIImage *defaultImage;
 
 @end
@@ -77,12 +78,15 @@
     float thisHeight = titleHeight + exerciseRecomHeight + exerciseListHeight;
     
     _exerciseRecom = [[UIView alloc] init];
-    _exerciseRecom.frame = CGRectMake(0, 0, DZScreenW, thisHeight);
+    _exerciseRecom.frame = CGRectMake(-1, 0, DZScreenW + 3, thisHeight);
     _exerciseRecom.backgroundColor = subViewBackgroundColor;
+    
+    NSLog(@"%@", subViewBackgroundColor);
     _exerciseRecom.layer.borderColor = defaultBorderColor.CGColor;
+    _exerciseRecom.layer.borderWidth = 1;
     
     //create UI elements in exerciseRecom
-    UILabel *recomTitle = [self recomTitleLabel:@"今日运动"];
+    UILabel *recomTitle = [self recomTitleLabel:@"今日为您运动"];
     UIImageView *exerciseView = [self exerciseShow];
     UIScrollView *exerciseList = [self horizontalScrollWithWidth:DZScreenW Height:exerciseListHeight andTitle:@"exercise"];
     
@@ -93,10 +97,32 @@
     
     //add exerciseRecom into Root View
     [_scrollRootView addSubview:_exerciseRecom];
+    
+    yPosition = thisHeight + 10;
 }
 
 - (void)setFoodRecomUI {
-
+    //create foodRecomUIView
+    float titleHeight = 26;
+    float foodRecomHeight = 180;
+    float thisHeight = titleHeight + foodRecomHeight;
+    
+    _foodRecom = [[UIView alloc] init];
+    _foodRecom.frame = CGRectMake(-1, yPosition, DZScreenW + 2, thisHeight);
+    _foodRecom.backgroundColor = subViewBackgroundColor;
+    _foodRecom.layer.borderColor = defaultBorderColor.CGColor;
+    _foodRecom.layer.borderWidth = 1;
+     NSLog(@"%@", subViewBackgroundColor);
+    
+    //create UI elements in foodRecom
+    UILabel *recomTitle = [self recomTitleLabel:@"今日为您推荐美食"];
+    
+    
+    //add UI elements into foodRecom
+    [_foodRecom addSubview:recomTitle];
+    
+    //add foodRecom into Root View
+    [_scrollRootView addSubview:_foodRecom];
 }
 
 
@@ -121,8 +147,8 @@
     _defaultImage = [UIImage imageNamed:@"defaultPosition"];
     
     exerciseShow.frame = CGRectMake(-1, yPosition, DZScreenW+2, DZScreenW*0.6);
-    exerciseShow.layer.borderColor = defaultBorderColor.CGColor;
-    exerciseShow.layer.borderWidth = 1;
+    //exerciseShow.layer.borderColor = defaultBorderColor.CGColor;
+    //exerciseShow.layer.borderWidth = 1;
     exerciseShow.image = _defaultImage;
     
     yPosition += DZScreenW * 0.6;
