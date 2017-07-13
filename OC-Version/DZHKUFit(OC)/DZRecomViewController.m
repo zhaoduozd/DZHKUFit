@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UIView *foodRecom;
 @property (nonatomic, strong) UIImage *defaultImage;
 
+
+
 @end
 
 @implementation DZRecomViewController {
@@ -32,14 +34,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self request];
     [self setDefaultColors];
     [self setXYPosition];
     [self setRootUI];
     [self setUIElements];
+    
 }
 
 
 #pragma -mark 自定义函数
+- (void)request {
+}
+
 - (void)setDefaultColors {
     
     //set background colors
@@ -166,31 +173,12 @@
     scrollView.contentSize = CGSizeMake(width*2, height);
     
     for (int i = 0; i < 10; i++) {
-        [scrollView addSubview:[self buttonWithMaskWithButtonWidth:70 buttonHeight:48 xPos:btnXPos yPos:10 backgroundImageName:@"defaultPosition" buttonName:@"运动"]];
+        [scrollView addSubview:[UIButton buttonWithMaskWithButtonWidth:70 buttonHeight:48 xPos:btnXPos yPos:10 backgroundImageName:@"defaultPosition" buttonName:@"运动"]];
         btnXPos += 74;
     }
     
     yPosition += height;
     return scrollView;
-}
-
-- (UIButton *)buttonWithMaskWithButtonWidth:(float) width buttonHeight:(float) height xPos:(float) x yPos:(float) y backgroundImageName:(NSString *) backImage buttonName:(NSString *) buttonName{
-    
-    UIButton *button = [[UIButton alloc] init];
-    CALayer *maskLayer = [[CALayer alloc] init];
-
-    button.frame = CGRectMake(x, y, width, height);
-    [button setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
-    //[button setTitle:buttonName forState:UIControlStateNormal];
-    [button.layer setMasksToBounds:YES];
-    [button.layer setCornerRadius:4.0];
-    
-    maskLayer.frame = CGRectMake(0, 0, width, height);
-    maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5].CGColor;
-    
-    [[button layer] addSublayer:maskLayer];
-    
-    return button;
 }
 
 @end

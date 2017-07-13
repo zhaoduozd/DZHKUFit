@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // 数据初始化
     [self initElements];
-    [self obtainFoodData];
+    [self request];
     //[self toSetTableUI];
     
 }
@@ -50,10 +50,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"id"];
+    static NSString *identifer = @"dzid";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+    }
     cell.textLabel.text = _foodContents[indexPath.section].sectionData[indexPath.row].foodName;
     cell.detailTextLabel.text = _foodContents[indexPath.section].sectionData[indexPath.row].foodCarhdr;
-    
     
     //设置text style
     //UIFont *myFont = [ UIFont fontWithName: @"Arial" size: 18.0 ];
@@ -114,7 +119,7 @@
     _foodContents = [[NSMutableArray alloc] init];
 }
 
-- (void)obtainFoodData {
+- (void)request {
     
     // 制作section数据模型
     for (int i = 0; i < 20; i++) {

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DZMainTabBarViewController.h"
+#import "DZLoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,7 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc] init];
     _window.frame = [UIScreen mainScreen].bounds;
-    _window.rootViewController = [[DZMainTabBarViewController alloc] init];
+    UINavigationController *rootnav = [[UINavigationController alloc] initWithRootViewController:[[DZLoginViewController alloc] init]];
+    _window.rootViewController = rootnav;
     return YES;
 }
 
