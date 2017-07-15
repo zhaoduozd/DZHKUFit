@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DZLoginViewController">
             <connections>
-                <outlet property="passwordInput" destination="1iM-VO-1ZK" id="qU6-O4-cho"/>
-                <outlet property="userInput" destination="Y52-hd-0EO" id="ZvO-48-esF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,56 +24,20 @@
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xKk-Jb-Lu9">
                             <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
-                            <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y52-hd-0EO">
-                                    <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
                         </stackView>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="yiA-xm-Zlx"/>
                     </constraints>
                 </stackView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1iM-VO-1ZK">
-                    <rect key="frame" x="50" y="417" width="275" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="BBX-qz-jQ5"/>
-                    </constraints>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6E-7g-FK7">
-                    <rect key="frame" x="100" y="517" width="175" height="50"/>
-                    <color key="backgroundColor" red="1" green="0.44834153748236816" blue="0.3931210850175032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="ktX-4o-eLU"/>
-                    </constraints>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" red="0.96048379114529625" green="1" blue="0.99481583480376934" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="login" destination="-1" eventType="touchUpInside" id="mtF-5g-b8e"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="1iM-VO-1ZK" secondAttribute="bottom" constant="200" id="77C-d9-Pjj"/>
-                <constraint firstItem="h6E-7g-FK7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="96F-db-7da"/>
-                <constraint firstItem="1iM-VO-1ZK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="CVR-Qr-MtR"/>
                 <constraint firstItem="rf2-nr-ehS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GON-rQ-xb0"/>
-                <constraint firstAttribute="bottom" secondItem="h6E-7g-FK7" secondAttribute="bottom" constant="100" id="Sea-uQ-9rO"/>
-                <constraint firstAttribute="trailing" secondItem="1iM-VO-1ZK" secondAttribute="trailing" constant="50" id="Sen-em-bfp"/>
                 <constraint firstAttribute="trailing" secondItem="rf2-nr-ehS" secondAttribute="trailing" constant="50" id="VDT-MA-UeB"/>
-                <constraint firstAttribute="trailing" secondItem="h6E-7g-FK7" secondAttribute="trailing" constant="100" id="nXJ-ES-9kL"/>
                 <constraint firstAttribute="bottom" secondItem="rf2-nr-ehS" secondAttribute="bottom" constant="300" id="vDK-r4-j9p"/>
             </constraints>
-            <point key="canvasLocation" x="-257" y="47"/>
+            <point key="canvasLocation" x="-257.5" y="46.5"/>
         </view>
     </objects>
 </document>

@@ -21,6 +21,7 @@
 		C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CAE1F123663005EAC8F /* DZExerciseViewController.m */; };
 		C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */; };
 		C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */; };
+		C6D64C701F1875B80052EAA9 /* UITextField+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D64C6F1F1875B80052EAA9 /* UITextField+Login.m */; };
 		C6F7073A1F14C38600CE4F10 /* DZRecomTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F707391F14C38600CE4F10 /* DZRecomTitleLabel.m */; };
 		D26092A91F135AAB00AB0C60 /* DZTableSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = D26092A81F135AAB00AB0C60 /* DZTableSectionData.m */; };
 		D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C3474A1F170CD100E67C18 /* UIButton+Mask.m */; };
@@ -76,6 +77,8 @@
 		C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodTableViewController.m; sourceTree = "<group>"; };
 		C6921CBB1F12383B005EAC8F /* DZPersonalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalTableViewController.h; sourceTree = "<group>"; };
 		C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalTableViewController.m; sourceTree = "<group>"; };
+		C6D64C6E1F1875B80052EAA9 /* UITextField+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Login.h"; sourceTree = "<group>"; };
+		C6D64C6F1F1875B80052EAA9 /* UITextField+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Login.m"; sourceTree = "<group>"; };
 		C6F707381F14C38600CE4F10 /* DZRecomTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRecomTitleLabel.h; sourceTree = "<group>"; };
 		C6F707391F14C38600CE4F10 /* DZRecomTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRecomTitleLabel.m; sourceTree = "<group>"; };
 		D26092A71F135AAB00AB0C60 /* DZTableSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTableSectionData.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				C6F707391F14C38600CE4F10 /* DZRecomTitleLabel.m */,
 				D2C347491F170CD100E67C18 /* UIButton+Mask.h */,
 				D2C3474A1F170CD100E67C18 /* UIButton+Mask.m */,
+				C6D64C6E1F1875B80052EAA9 /* UITextField+Login.h */,
+				C6D64C6F1F1875B80052EAA9 /* UITextField+Login.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				C6921CA81F122ED0005EAC8F /* DZMainTabBarViewController.m in Sources */,
 				C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */,
 				D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */,
+				C6D64C701F1875B80052EAA9 /* UITextField+Login.m in Sources */,
 				D26092A91F135AAB00AB0C60 /* DZTableSectionData.m in Sources */,
 				C6921C781F122536005EAC8F /* AppDelegate.m in Sources */,
 				C6921C751F122536005EAC8F /* main.m in Sources */,
