@@ -30,7 +30,7 @@
     _ClassNames = @[@"DZRecomViewController",@"DZExerciseViewController",@"DZFoodTableViewController",@"DZPersonalTableViewController"];
 
     [self addChildVC];
-    self.tabBar.tintColor = AppColor;
+    self.tabBar.tintColor = AppDefaultColor;
 }
 
 
@@ -45,7 +45,7 @@
         //nav.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",_Icons[i]]];
         
         // 导航栏背景色
-        [nav.navigationBar setBarTintColor:[UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1]];
+        [nav.navigationBar setBarTintColor:AppDefaultBarTintColor];
         [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]];
         
         

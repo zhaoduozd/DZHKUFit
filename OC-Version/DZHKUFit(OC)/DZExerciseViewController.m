@@ -17,15 +17,6 @@
 @implementation DZExerciseViewController {
     double yPosition;
     double xDefaultPosition;
-    
-    UIColor *backgroundColor;
-    UIColor *subViewBackgroundColor;
-    
-    UIColor *defaultBorderColor;
-    
-    UIColor *fontDefaultColor;
-    UIColor *fontDetailColor;
-
 }
 
 - (void)viewDidLoad {
@@ -34,7 +25,6 @@
     yPosition = 0;
     
     [super viewDidLoad];
-    [self setDefaultColors];
     [self setRootView];
     [self setExerciseWrapper];
     
@@ -44,22 +34,9 @@
 
 -(void)setRootView {
     _scrollRootView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    _scrollRootView.backgroundColor = backgroundColor;
+    _scrollRootView.backgroundColor = AppDefaultBackgroundColor;
     _scrollRootView.contentSize = CGSizeMake(DZScreenW, 2*DZScreenH);
     [self.view addSubview:_scrollRootView];
-}
-
-- (void)setDefaultColors {
-    
-    //set background colors
-    backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1];
-    subViewBackgroundColor = [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1];
-    
-    //set font colors
-    fontDefaultColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1];
-    
-    //set border colors
-    defaultBorderColor = [UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1];
 }
 
 - (void)setExerciseWrapper {
@@ -84,9 +61,9 @@
     float btnY = 26;
     
     exerciseSection.frame = CGRectMake(x, y, DZScreenW, height);
-    exerciseSection.backgroundColor = subViewBackgroundColor;
+    exerciseSection.backgroundColor = AppDefaultSubViewBackgroundColor;
     exerciseSection.layer.borderWidth = 1;
-    exerciseSection.layer.borderColor = defaultBorderColor.CGColor;
+    exerciseSection.layer.borderColor = AppDefaultBorderColor;
     
     [exerciseSection addSubview:sectionTitle];
     for (int i = 0; i < 6; i++) {
@@ -111,7 +88,7 @@
     label.font = [UIFont fontWithName:@"Arial" size:12];
     label.text = sectionName;
     label.frame = CGRectMake(xDefaultPosition, 0, DZScreenW, labelHeight);
-    label.textColor = fontDefaultColor;
+    label.textColor = AppDefaultFontColor;
     
     yPosition += labelHeight;
     return label;
@@ -125,7 +102,6 @@
     
     button.frame = CGRectMake(x, y, width, height);
     [button setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
-    //[button setTitle:buttonName forState:UIControlStateNormal];
     [button.layer setMasksToBounds:YES];
     [button.layer setCornerRadius:4.0];
     

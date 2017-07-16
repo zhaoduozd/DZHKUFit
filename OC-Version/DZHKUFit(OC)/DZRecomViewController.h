@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DZUIViewController.h"
 
-@interface DZRecomViewController : UIViewController
+@interface DZRecomViewController : DZUIViewController
 
 @end

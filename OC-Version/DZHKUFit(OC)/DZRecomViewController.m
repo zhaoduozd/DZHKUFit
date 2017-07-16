@@ -22,20 +22,11 @@
 @implementation DZRecomViewController {
     double yPosition;
     double xDefaultPosition;
-    
-    UIColor *backgroundColor;
-    UIColor *subViewBackgroundColor;
-    
-    UIColor *defaultBorderColor;
-    
-    UIColor *fontDefaultColor;
-    UIColor *fontDetailColor;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self request];
-    [self setDefaultColors];
     [self setXYPosition];
     [self setRootUI];
     [self setUIElements];
@@ -47,19 +38,6 @@
 - (void)request {
 }
 
-- (void)setDefaultColors {
-    
-    //set background colors
-    backgroundColor = [UIColor colorWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1];
-    subViewBackgroundColor = [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1];
-    
-    //set font colors
-    fontDefaultColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1];
-    
-    //set border colors
-    defaultBorderColor = [UIColor colorWithRed:228.0/255.0 green:228.0/255.0 blue:228.0/255.0 alpha:1];
-}
-
 - (void)setXYPosition {
     xDefaultPosition = 5;
     yPosition = 0;
@@ -67,7 +45,7 @@
 
 - (void)setRootUI {
     _scrollRootView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    _scrollRootView.backgroundColor = backgroundColor;
+    _scrollRootView.backgroundColor = AppDefaultBackgroundColor;
     _scrollRootView.contentSize = CGSizeMake(DZScreenW, 2*DZScreenH);
     [self.view addSubview:_scrollRootView];
 }
@@ -86,10 +64,8 @@
     
     _exerciseRecom = [[UIView alloc] init];
     _exerciseRecom.frame = CGRectMake(-1, 0, DZScreenW + 3, thisHeight);
-    _exerciseRecom.backgroundColor = subViewBackgroundColor;
-    
-    NSLog(@"%@", subViewBackgroundColor);
-    _exerciseRecom.layer.borderColor = defaultBorderColor.CGColor;
+    _exerciseRecom.backgroundColor = AppDefaultSubViewBackgroundColor;
+    _exerciseRecom.layer.borderColor = AppDefaultBorderColor;
     _exerciseRecom.layer.borderWidth = 1;
     
     //create UI elements in exerciseRecom
@@ -116,10 +92,9 @@
     
     _foodRecom = [[UIView alloc] init];
     _foodRecom.frame = CGRectMake(-1, yPosition, DZScreenW + 2, thisHeight);
-    _foodRecom.backgroundColor = subViewBackgroundColor;
-    _foodRecom.layer.borderColor = defaultBorderColor.CGColor;
+    _foodRecom.backgroundColor = AppDefaultSubViewBackgroundColor;
+    _foodRecom.layer.borderColor = AppDefaultBorderColor;
     _foodRecom.layer.borderWidth = 1;
-     NSLog(@"%@", subViewBackgroundColor);
     
     //create UI elements in foodRecom
     UILabel *recomTitle = [self recomTitleLabel:@"今日为您推荐美食"];
@@ -141,7 +116,7 @@
     label.font = [UIFont fontWithName:@"Arial" size:12];
     label.text = textContent;
     label.frame = CGRectMake(xDefaultPosition, 0, DZScreenW, labelHeight);
-    label.textColor = fontDefaultColor;
+    label.textColor = AppDefaultFontColor;
     
     yPosition += labelHeight;
     return label;
@@ -154,8 +129,6 @@
     _defaultImage = [UIImage imageNamed:@"defaultPosition"];
     
     exerciseShow.frame = CGRectMake(-1, yPosition, DZScreenW+2, DZScreenW*0.6);
-    //exerciseShow.layer.borderColor = defaultBorderColor.CGColor;
-    //exerciseShow.layer.borderWidth = 1;
     exerciseShow.image = _defaultImage;
     
     yPosition += DZScreenW * 0.6;
@@ -169,7 +142,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     
     scrollView.frame = CGRectMake(0, yPosition, width, height);
-    scrollView.backgroundColor = subViewBackgroundColor;
+    scrollView.backgroundColor = AppDefaultSubViewBackgroundColor;
     scrollView.contentSize = CGSizeMake(width*2, height);
     
     for (int i = 0; i < 10; i++) {

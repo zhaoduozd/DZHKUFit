@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DZMainTabBarViewController.h"
 #import "DZLoginViewController.h"
+#import "DZSignInViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,6 +21,9 @@
     _window = [[UIWindow alloc] init];
     _window.frame = [UIScreen mainScreen].bounds;
     UINavigationController *rootnav = [[UINavigationController alloc] initWithRootViewController:[[DZLoginViewController alloc] init]];
+    
+    
+//    UINavigationController *rootnav = [[UINavigationController alloc] initWithRootViewController:[[DZSignInViewController alloc] init]];
     _window.rootViewController = rootnav;
     return YES;
 }

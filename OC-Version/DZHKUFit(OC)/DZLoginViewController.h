@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DZSignInViewController.h"
+
 
 @interface DZLoginViewController : UIViewController
 

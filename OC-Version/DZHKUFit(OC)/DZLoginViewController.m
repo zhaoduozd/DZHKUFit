@@ -15,26 +15,41 @@
 @property(nonatomic, strong) UITextField *userInput;
 @property(nonatomic, strong) UITextField *passwInput;
 @property(nonatomic, strong) UIButton *loginButton;
-
+@property(nonatomic, strong) UIButton *forgetPassw;
+@property(nonatomic, strong) UIButton *signin;
 
 @end
 
-@implementation DZLoginViewController
+@implementation DZLoginViewController {
+    //set positions
+    float yInputField;
+    float xInput;
+    
+    //set sizes
+    float hInput;
+    float wInput;
+    
+    float xBtn;
+    float wBtn;
+    float hBtn;
+};
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     [self resetUI];
-    
-    
-    
-    // Do any additional setup after loading the view from its nib.
-    //NSArray *array = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"user" ofType:@"plist"]];
-    //NSLog(@"");
 }
 
 - (void)resetUI {
     
-    /** set root view background  **/
+    [self setRootUI];
+    [self setTextInputs];
+    [self setLoginBtn];
+    [self setSigninAndPassw];
+}
 
+- (void)setRootUI {
+    
     //set background image
     UIColor *bgUIColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"loginBackground"]];
     [self.view setBackgroundColor:bgUIColor];
@@ -43,55 +58,92 @@
     CALayer *maskLayer = [[CALayer alloc] init];
     maskLayer.frame = self.view.frame;
     maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.45].CGColor;
+    
     [[self.view layer] addSublayer:maskLayer];
+}
 
+- (void)setTextInputs {
+    yInputField = DZScreenH * 1 / 3;
+    xInput = DZScreenW * (1 - 1/1.5) / 2;
+    hInput = DZScreenH / 20;
+    wInput = DZScreenW / 1.5;
     
-    /** set elements' UI  **/
-    
-    //set positions
-    float yInputField = DZScreenH * 1 / 3;
-    float xInput = DZScreenW * (1 - 1/1.5) / 2;
-    float xBtn = DZScreenW / 3;
-    //set sizes
-    float hInput = DZScreenH / 20;
-    float wInput = DZScreenW / 1.5;
-    float wBtn = DZScreenW / 3;
-    float hBtn = DZScreenH / 20;
-    
-    //init elements
     _userInput = [UITextField loginTextFieldWidth:wInput Height:hInput xPos: xInput yPos: yInputField placeHolder:@"用户名" fieldType:@"username"];
     
     _passwInput = [UITextField loginTextFieldWidth:wInput Height:hInput xPos: xInput yPos: (yInputField+hInput+8) placeHolder:@"密码" fieldType:@"passw"];
     
+    _userInput.delegate = self;
+    _passwInput.delegate = self;
+    
+    [self.view addSubview:_userInput];
+    [self.view addSubview:_passwInput];
+}
+
+- (void)setLoginBtn {
+    xBtn = DZScreenW / 3;
+    wBtn = DZScreenW / 3;
+    hBtn = DZScreenH / 20;
+    
     _loginButton = [[UIButton alloc] init];
-    _loginButton.backgroundColor = AppColor;
+    _loginButton.backgroundColor = AppDefaultColor;
     _loginButton.frame = CGRectMake(xBtn, yInputField + hInput*2 + 50, wBtn, hBtn);
-    _loginButton.backgroundColor = AppColor;
     [_loginButton.layer setCornerRadius:4.0];
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    _loginButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    _loginButton.titleLabel.font = [UIFont systemFontOfSize:13];
     
     SEL eventHandler = @selector(login);
     [_loginButton addTarget:self action:eventHandler forControlEvents:UIControlEventTouchUpInside];
     
-    _userInput.delegate = self;
-    _passwInput.delegate = self;
-    
-    
-    //add elements into root view
     [self.view addSubview:_loginButton];
-    [self.view addSubview:_userInput];
-    [self.view addSubview:_passwInput];
-    
-    
 }
+
+- (void)setSigninAndPassw {
+    _forgetPassw = [[UIButton alloc] init];
+    _signin = [[UIButton alloc] init];
+    
+    float y = hInput * 2 + 8 + yInputField;
+    float xleft = xInput;
+    float xright = xInput + wInput - 76;
+    
+    UIColor *fontColor = [UIColor colorWithRed:130/255.0 green:130/255.0 blue:130/255.0 alpha:1];
+    
+
+    _signin.frame = CGRectMake(xleft, y, 100, 26);
+    _forgetPassw.frame = CGRectMake(xright, y, 100, 26);
+    
+    [_signin setTitle:@"没有账号？注册！" forState:UIControlStateNormal];
+    [_signin setTitleColor: fontColor forState:UIControlStateNormal];
+    _signin.titleLabel.font = [UIFont systemFontOfSize:12];
+    
+    [_forgetPassw setTitle:@"忘记密码？" forState:UIControlStateNormal];
+    [_forgetPassw setTitleColor: fontColor forState:UIControlStateNormal];
+    _forgetPassw.titleLabel.font = [UIFont systemFontOfSize:12];
+    
+    SEL eventHandler = @selector(signIn);
+    [_signin addTarget:self action:eventHandler forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:_signin];
+    [self.view addSubview:_forgetPassw];
+}
+
+
 
 - (void)login {
     NSLog(@"username:%@ \n password:%@", _userInput.text, _passwInput.text);
+    
+    NSArray *array = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"user" ofType:@"plist"]];
+    NSLog(@"");
+
+    
     UIViewController *main = [[DZMainTabBarViewController alloc] init];
     [self presentViewController:main animated:YES completion:nil];
 }
 
+- (void)signIn {
+    DZSignInViewController *signUIView = [[DZSignInViewController alloc] init];
+    [self.navigationController pushViewController:signUIView animated:YES];
+}
+    
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
