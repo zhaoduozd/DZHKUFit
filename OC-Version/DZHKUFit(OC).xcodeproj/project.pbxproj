@@ -23,6 +23,8 @@
 		C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CAE1F123663005EAC8F /* DZExerciseViewController.m */; };
 		C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */; };
 		C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */; };
+		C6D629EF1F1D28D50029EF17 /* UIView+ExerciseShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */; };
+		C6D629F21F1D2BE20029EF17 /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D629F11F1D2BE20029EF17 /* ExerciseDetailViewController.m */; };
 		C6D64C701F1875B80052EAA9 /* UITextField+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D64C6F1F1875B80052EAA9 /* UITextField+Login.m */; };
 		C6D64C731F1B48200052EAA9 /* DZSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D64C721F1B48200052EAA9 /* DZSignInViewController.m */; };
 		C6D64C7C1F1B57030052EAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D64C7B1F1B57030052EAA9 /* Main.storyboard */; };
@@ -86,6 +88,10 @@
 		C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodTableViewController.m; sourceTree = "<group>"; };
 		C6921CBB1F12383B005EAC8F /* DZPersonalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalTableViewController.h; sourceTree = "<group>"; };
 		C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalTableViewController.m; sourceTree = "<group>"; };
+		C6D629ED1F1D28D50029EF17 /* UIView+ExerciseShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ExerciseShow.h"; sourceTree = "<group>"; };
+		C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ExerciseShow.m"; sourceTree = "<group>"; };
+		C6D629F01F1D2BE20029EF17 /* ExerciseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailViewController.h; sourceTree = "<group>"; };
+		C6D629F11F1D2BE20029EF17 /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailViewController.m; sourceTree = "<group>"; };
 		C6D64C6E1F1875B80052EAA9 /* UITextField+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Login.h"; sourceTree = "<group>"; };
 		C6D64C6F1F1875B80052EAA9 /* UITextField+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Login.m"; sourceTree = "<group>"; };
 		C6D64C711F1B48200052EAA9 /* DZSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZSignInViewController.h; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 				C6D64C7E1F1B5CB20052EAA9 /* DZUIViewController.m */,
 				C622AD501F1B9C8400D84D53 /* UIButton+DefaultBtn.h */,
 				C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */,
+				C6D629ED1F1D28D50029EF17 /* UIView+ExerciseShow.h */,
+				C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -334,6 +342,8 @@
 			children = (
 				C6921CAD1F123663005EAC8F /* DZExerciseViewController.h */,
 				C6921CAE1F123663005EAC8F /* DZExerciseViewController.m */,
+				C6D629F01F1D2BE20029EF17 /* ExerciseDetailViewController.h */,
+				C6D629F11F1D2BE20029EF17 /* ExerciseDetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -519,9 +529,11 @@
 				C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */,
 				C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */,
 				C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */,
+				C6D629F21F1D2BE20029EF17 /* ExerciseDetailViewController.m in Sources */,
 				C6921CA81F122ED0005EAC8F /* DZMainTabBarViewController.m in Sources */,
 				C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */,
 				D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */,
+				C6D629EF1F1D28D50029EF17 /* UIView+ExerciseShow.m in Sources */,
 				C6D64C821F1B5F9C0052EAA9 /* UITextField+SignIn.m in Sources */,
 				C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */,
 				C6D64C7F1F1B5CB20052EAA9 /* DZUIViewController.m in Sources */,

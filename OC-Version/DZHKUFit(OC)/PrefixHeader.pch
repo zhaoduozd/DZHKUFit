@@ -25,6 +25,8 @@
 
 #define AppDefaultBorderColor [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1].CGColor
 
+#define AppDefaultBorderColorUI [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1]
+
 #define AppDefaultFontColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
 
 #define AppDefaultSubViewBackgroundColor [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1]

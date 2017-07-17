@@ -69,7 +69,7 @@
     _exerciseRecom.layer.borderWidth = 1;
     
     //create UI elements in exerciseRecom
-    UILabel *recomTitle = [self recomTitleLabel:@"今日为您运动"];
+    UILabel *recomTitle = [self recomTitleLabel:@"今日推荐运动"];
     UIImageView *exerciseView = [self exerciseShow];
     UIScrollView *exerciseList = [self horizontalScrollWithWidth:DZScreenW Height:exerciseListHeight andTitle:@"exercise"];
     

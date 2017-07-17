@@ -14,70 +14,129 @@
 
 @end
 
-@implementation DZPersonalTableViewController
+@implementation DZPersonalTableViewController {
+    float firstSectionHeight;
+    float cellHeight;
+    float sectionFooterHeight;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _cellTitleList = @[@[@"今日饮食推荐", @"今日运动推荐"], @[@"运动历史", @"赞过的食物"], @[@"打卡", @"设置运动提醒"], @[@"身体数据"], @[@"退出登录"]];
+    [self setData];
+    self.view.backgroundColor = AppDefaultSubViewBackgroundColor;
+    self.tableView.separatorStyle = NO;
 }
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return _cellTitleList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    //NSLog(@"%ld", (long)section);
+    if (section == 0) {
+        return 1;
+    }
     
-    return 3;
+    NSMutableArray *tmp = [_cellTitleList objectAtIndex:section];
+    return tmp.count;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *sectionHeader = [[UILabel alloc] init];
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *sectionFooter = [[UILabel alloc] init];
+    CGRect size = sectionFooter.frame;
+    size.size.height = 10;
+    size.size.width = DZScreenW;
+    sectionFooter.frame = size;
+    sectionFooter.backgroundColor = AppDefaultBackgroundColor;
+    
+    return sectionFooter;
+}
 
-    return sectionHeader;
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return sectionFooterHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        return firstSectionHeight;
+    }
+    
+    return cellHeight;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *identifer = @"personalInfoCells";
 
+    NSMutableArray *tmp = _cellTitleList[indexPath.section];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    UIButton *tmpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, DZScreenW, 40)];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifer];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        
+        // set cell
+        if (indexPath.section == 0) {
+            
+            float imageHeight = firstSectionHeight - 20;
+            UIImage *userimage = [UIImage imageNamed:tmp[1]];
+            UIImageView *userimageview = [[UIImageView alloc] initWithImage:userimage];
+            UIButton *personbtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, DZScreenW, firstSectionHeight)];
+            
+            UILabel *username = [[UILabel alloc] initWithFrame:CGRectMake(DZScreenW/2, 0, DZScreenW/2, firstSectionHeight)];
+            
+            userimageview.frame = CGRectMake(30, 10, imageHeight, imageHeight);
+            [userimageview.layer setCornerRadius: imageHeight/2];
+            userimageview.clipsToBounds = YES;
+            
+            username.textColor = [UIColor whiteColor];
+            username.font = [UIFont boldSystemFontOfSize:16];
+            username.textAlignment = UITextAlignmentLeft;
+            username.text = tmp[0];
+            
+            cell.backgroundColor = AppDefaultBarTintColor;
+            
+            [cell addSubview:userimageview];
+            [cell addSubview:username];
+            [cell addSubview:personbtn];
+            
+        } else {
+            UIView *tmpFootLine = [[UIView alloc] initWithFrame:CGRectMake(5, 39, DZScreenW-5, 1)];
+            
+            tmpFootLine.backgroundColor = AppDefaultBorderColorUI;
+            
+            cell.backgroundColor = AppDefaultSubViewBackgroundColor;
+            cell.textLabel.textColor = AppDefaultFontColor;
+            cell.textLabel.font = [UIFont systemFontOfSize:13];
+            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            
+            [cell addSubview:tmpButton];
+            [cell addSubview:tmpFootLine];
+        }
+        
     }
-    cell.textLabel.text = @"123";
-    //cell.detailTextLabel.text = _foodContents[indexPath.section].sectionData[indexPath.row].foodCarhdr;
     
-    //设置text style
-    //UIFont *myFont = [ UIFont fontWithName: @"Arial" size: 18.0 ];
-    //cell.textLabel.font  = myFont;
-    cell.textLabel.adjustsFontSizeToFitWidth = NO;
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
-    
-    
-    
-    cell.detailTextLabel.adjustsFontSizeToFitWidth = NO;
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:10];
-    //cell.detailTextLabel.numberOfLines = 2;
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1];
-    
+    if (indexPath.section > 0) {
+        cell.textLabel.text = tmp[indexPath.row];
+    }
     
 
-    
-    //NSLog(@"%@", indexPath);
     return cell;
 }
 
+#pragma mark - DZ method
 
-
-
-
+- (void) setData {
+    _cellTitleList = @[@[@"Miss Dora", @"defaultPosition"],@[@"今日运动推荐", @"今日饮食推荐"], @[@"运动历史", @"赞过的食物"], @[@"打卡", @"设置运动提醒"], @[@"身体数据"], @[@"退出登录"]];
+    firstSectionHeight = 120.0;
+    cellHeight = 40.0;
+    sectionFooterHeight = 10.0;
+}
 
 
 @end

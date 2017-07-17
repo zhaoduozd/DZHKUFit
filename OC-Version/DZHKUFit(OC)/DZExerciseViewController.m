@@ -69,6 +69,9 @@
     for (int i = 0; i < 6; i++) {
         UIButton *tmpButton = [UIButton bigMaskButtonWithTitle:@"西西里卷腹" time:@"一组10分钟" calorie:@"78 Kcal" imageName:@"defaultPosition" xPos:btnX yPos:btnY Width:btnW Height:btnH];
         
+        SEL eventHandler = @selector(goToExerciseDetail);
+        [tmpButton addTarget:self action:eventHandler forControlEvents:UIControlEventTouchUpInside];
+        
         [exerciseSection addSubview:tmpButton];
         
         btnX += (btnW + 10);
@@ -93,6 +96,11 @@
     
     yPosition += labelHeight;
     return label;
+}
+
+- (void)goToExerciseDetail {
+    ExerciseDetailViewController *exerciseUIView = [[ExerciseDetailViewController alloc] init];
+    [self.navigationController pushViewController:exerciseUIView animated:YES];
 }
 
 @end
