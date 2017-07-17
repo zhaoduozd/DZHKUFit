@@ -87,8 +87,9 @@
 - (void)setFoodRecomUI {
     //create foodRecomUIView
     float titleHeight = 26;
-    float foodRecomHeight = 180;
+    float foodRecomHeight = titleHeight + 270;
     float thisHeight = titleHeight + foodRecomHeight;
+    float ypos[] = {26.0, 116.0, 206.0};
     
     _foodRecom = [[UIView alloc] init];
     _foodRecom.frame = CGRectMake(-1, yPosition, DZScreenW + 2, thisHeight);
@@ -102,6 +103,12 @@
     
     //add UI elements into foodRecom
     [_foodRecom addSubview:recomTitle];
+    
+    for (int i = 0; i < 3; i++) {
+        UIView *tmpView = [UIView recomFoodSubWrapperViewxPos:xDefaultPosition yPos: ypos[i]];
+        
+        [_foodRecom addSubview:tmpView];
+    }
     
     //add foodRecom into Root View
     [_scrollRootView addSubview:_foodRecom];

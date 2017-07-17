@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C622AD4F1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD4E1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m */; };
 		C622AD521F1B9C8400D84D53 /* UIButton+DefaultBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */; };
+		C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD551F1BA73100D84D53 /* UIView+RecomFood.m */; };
+		C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */; };
 		C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */ = {isa = PBXBuildFile; fileRef = C65A2B2C1F131DCC00BDF446 /* DZFoodContentData.m */; };
 		C6921C751F122536005EAC8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921C741F122536005EAC8F /* main.m */; };
 		C6921C781F122536005EAC8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921C771F122536005EAC8F /* AppDelegate.m */; };
@@ -54,6 +56,10 @@
 		C622AD4E1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SignLabelTitle.m"; sourceTree = "<group>"; };
 		C622AD501F1B9C8400D84D53 /* UIButton+DefaultBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+DefaultBtn.h"; sourceTree = "<group>"; };
 		C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DefaultBtn.m"; sourceTree = "<group>"; };
+		C622AD541F1BA73100D84D53 /* UIView+RecomFood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RecomFood.h"; sourceTree = "<group>"; };
+		C622AD551F1BA73100D84D53 /* UIView+RecomFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RecomFood.m"; sourceTree = "<group>"; };
+		C622AD581F1BAD8100D84D53 /* UIButton+BigMaskButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BigMaskButton.h"; sourceTree = "<group>"; };
+		C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BigMaskButton.m"; sourceTree = "<group>"; };
 		C65A2B2B1F131DCC00BDF446 /* DZFoodContentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFoodContentData.h; sourceTree = "<group>"; };
 		C65A2B2C1F131DCC00BDF446 /* DZFoodContentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodContentData.m; sourceTree = "<group>"; };
 		C6921C701F122536005EAC8F /* DZHKUFit(OC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DZHKUFit(OC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +129,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C622AD531F1BA70200D84D53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C622AD541F1BA73100D84D53 /* UIView+RecomFood.h */,
+				C622AD551F1BA73100D84D53 /* UIView+RecomFood.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C622AD571F1BAD5D00D84D53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C622AD581F1BAD8100D84D53 /* UIButton+BigMaskButton.h */,
+				C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		C65A2B271F1317D400BDF446 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,7 +268,8 @@
 		C6921CB41F1236D3005EAC8F /* Recom */ = {
 			isa = PBXGroup;
 			children = (
-				C6D64C761F1B4AE90052EAA9 /* controller */,
+				C622AD531F1BA70200D84D53 /* View */,
+				C6D64C761F1B4AE90052EAA9 /* Controller */,
 			);
 			name = Recom;
 			sourceTree = "<group>";
@@ -252,7 +277,8 @@
 		C6921CB51F1236DE005EAC8F /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
-				C6D64C771F1B4B130052EAA9 /* controller */,
+				C622AD571F1BAD5D00D84D53 /* View */,
+				C6D64C771F1B4B130052EAA9 /* Controller */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";
@@ -294,22 +320,22 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		C6D64C761F1B4AE90052EAA9 /* controller */ = {
+		C6D64C761F1B4AE90052EAA9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C6921CA91F12305C005EAC8F /* DZRecomViewController.h */,
 				C6921CAA1F12305C005EAC8F /* DZRecomViewController.m */,
 			);
-			name = controller;
+			name = Controller;
 			sourceTree = "<group>";
 		};
-		C6D64C771F1B4B130052EAA9 /* controller */ = {
+		C6D64C771F1B4B130052EAA9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				C6921CAD1F123663005EAC8F /* DZExerciseViewController.h */,
 				C6921CAE1F123663005EAC8F /* DZExerciseViewController.m */,
 			);
-			name = controller;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		C6D64C781F1B4B260052EAA9 /* controller */ = {
@@ -490,12 +516,14 @@
 				C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */,
 				C6D64C731F1B48200052EAA9 /* DZSignInViewController.m in Sources */,
 				D2C347521F1713AE00E67C18 /* DZLoginViewController.m in Sources */,
+				C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */,
 				C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */,
 				C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */,
 				C6921CA81F122ED0005EAC8F /* DZMainTabBarViewController.m in Sources */,
 				C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */,
 				D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */,
 				C6D64C821F1B5F9C0052EAA9 /* UITextField+SignIn.m in Sources */,
+				C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */,
 				C6D64C7F1F1B5CB20052EAA9 /* DZUIViewController.m in Sources */,
 				C6D64C701F1875B80052EAA9 /* UITextField+Login.m in Sources */,
 				C622AD521F1B9C8400D84D53 /* UIButton+DefaultBtn.m in Sources */,

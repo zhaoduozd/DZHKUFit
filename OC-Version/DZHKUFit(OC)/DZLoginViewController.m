@@ -30,6 +30,7 @@
     float wInput;
     
     float xBtn;
+    float yBtn;
     float wBtn;
     float hBtn;
 };
@@ -81,15 +82,12 @@
 
 - (void)setLoginBtn {
     xBtn = DZScreenW / 3;
+    yBtn = yInputField + hInput*2 + 50;
     wBtn = DZScreenW / 3;
     hBtn = DZScreenH / 20;
+    NSString *btnTitle = @"登录";
     
-    _loginButton = [[UIButton alloc] init];
-    _loginButton.backgroundColor = AppDefaultColor;
-    _loginButton.frame = CGRectMake(xBtn, yInputField + hInput*2 + 50, wBtn, hBtn);
-    [_loginButton.layer setCornerRadius:4.0];
-    [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    _loginButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    _loginButton = [UIButton DZDefaultBtnWithWidth:wBtn Height:hBtn xPos:xBtn yPos:yBtn Title:btnTitle];
     
     SEL eventHandler = @selector(login);
     [_loginButton addTarget:self action:eventHandler forControlEvents:UIControlEventTouchUpInside];

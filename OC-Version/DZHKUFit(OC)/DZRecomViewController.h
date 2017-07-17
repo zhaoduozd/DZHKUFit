@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DZUIViewController.h"
+#import "UIView+RecomFood.h"
 
 @interface DZRecomViewController : DZUIViewController
 

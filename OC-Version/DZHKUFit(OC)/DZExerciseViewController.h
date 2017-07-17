@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIButton+BigMaskButton.h"
 
 @interface DZExerciseViewController : UIViewController
 

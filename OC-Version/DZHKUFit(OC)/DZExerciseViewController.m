@@ -67,7 +67,8 @@
     
     [exerciseSection addSubview:sectionTitle];
     for (int i = 0; i < 6; i++) {
-        UIButton *tmpButton = [self buttonWithMaskWithButtonWidth:btnW buttonHeight:btnH xPos:btnX yPos:btnY backgroundImageName:@"defaultPosition" buttonName:@"sprot"];
+        UIButton *tmpButton = [UIButton bigMaskButtonWithTitle:@"西西里卷腹" time:@"一组10分钟" calorie:@"78 Kcal" imageName:@"defaultPosition" xPos:btnX yPos:btnY Width:btnW Height:btnH];
+        
         [exerciseSection addSubview:tmpButton];
         
         btnX += (btnW + 10);
@@ -93,26 +94,5 @@
     yPosition += labelHeight;
     return label;
 }
-
-
-- (UIButton *)buttonWithMaskWithButtonWidth:(float) width buttonHeight:(float) height xPos:(float) x yPos:(float) y backgroundImageName:(NSString *) backImage buttonName:(NSString *) buttonName{
-    
-    UIButton *button = [[UIButton alloc] init];
-    CALayer *maskLayer = [[CALayer alloc] init];
-    
-    button.frame = CGRectMake(x, y, width, height);
-    [button setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
-    [button.layer setMasksToBounds:YES];
-    [button.layer setCornerRadius:4.0];
-    
-    maskLayer.frame = CGRectMake(0, 0, width, height);
-    maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5].CGColor;
-    
-    [[button layer] addSublayer:maskLayer];
-    
-    return button;
-}
-
-
 
 @end

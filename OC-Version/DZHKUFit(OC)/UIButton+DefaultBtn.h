@@ -10,4 +10,6 @@
 
 @interface UIButton (DefaultBtn)
 
++ (UIButton *)DZDefaultBtnWithWidth:(float) width Height:(float) height xPos:(float) x yPos:(float) y Title:(NSString *) btntitle;
+
 @end

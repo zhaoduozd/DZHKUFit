@@ -60,10 +60,12 @@
     float wtf = wSignField/4*3, htf = DZScreenH/20;
     float wdl = wtf, hdl = 20;
     float wtl = wSignField/4, htl = DZScreenH/20;
+    float wbtn = wSignField/3, hbtn = htl;
     
     float xtl = 0, ytl = 0;
     float xtf = wSignField/4, ytf = 0;
     float xdl = xtf, ydl = htf;
+    float xbtn = wSignField/3, ybtn;
     
     for ( int i = 0; i < 4; i++ ) {
         NSString *textmode;
@@ -88,8 +90,9 @@
     }
     
     // add sign button
-    
-    
+    ybtn = ydl + 10;
+    _siginButton = [UIButton DZDefaultBtnWithWidth:wbtn Height:hbtn xPos:xbtn yPos:ybtn Title:@"注册"];
+    [_elementsField addSubview:_siginButton];
 }
 
 @end
