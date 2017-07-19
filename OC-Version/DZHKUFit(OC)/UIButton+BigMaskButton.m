@@ -15,7 +15,7 @@
     UILabel *btnTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, height/2-20, width, 26)];
     UILabel *btnTime = [[UILabel alloc] initWithFrame:CGRectMake(width/2, height-40, width/2, 26)];
     UILabel *btnCalorie = [[UILabel alloc] initWithFrame:CGRectMake(10, height-40, width/2, 26)];
-    UIColor *fontColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1];
+    UIColor *fontColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     CALayer *maskLayer = [[CALayer alloc] init];
     
     button.frame = CGRectMake(x, y, width, height);
@@ -24,11 +24,11 @@
     [button.layer setCornerRadius:4.0];
     
     maskLayer.frame = CGRectMake(0, 0, width, height);
-    maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7].CGColor;
+    maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6].CGColor;
     
     btnTitle.text = title;
-    btnTime.font = [UIFont boldSystemFontOfSize:15.0];
-    btnTitle.textColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
+    btnTitle.font = [UIFont boldSystemFontOfSize:14.0];
+    btnTitle.textColor = [UIColor whiteColor];
     
     btnTime.text = time;
     btnTime.font = [UIFont systemFontOfSize:12.0];

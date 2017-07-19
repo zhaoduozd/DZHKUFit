@@ -12,6 +12,9 @@
 		C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD551F1BA73100D84D53 /* UIView+RecomFood.m */; };
 		C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */; };
 		C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */ = {isa = PBXBuildFile; fileRef = C65A2B2C1F131DCC00BDF446 /* DZFoodContentData.m */; };
+		C6616CAD1F1E1AA200CFB3C4 /* UIView+FooterLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CAC1F1E1AA200CFB3C4 /* UIView+FooterLine.m */; };
+		C6616CB11F1E444100CFB3C4 /* ExerciseListData.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CB01F1E444100CFB3C4 /* ExerciseListData.m */; };
+		C6616CB41F1E481300CFB3C4 /* ExerciseTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CB31F1E481300CFB3C4 /* ExerciseTableData.m */; };
 		C6921C751F122536005EAC8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921C741F122536005EAC8F /* main.m */; };
 		C6921C781F122536005EAC8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921C771F122536005EAC8F /* AppDelegate.m */; };
 		C6921C801F122536005EAC8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6921C7F1F122536005EAC8F /* Assets.xcassets */; };
@@ -64,6 +67,12 @@
 		C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BigMaskButton.m"; sourceTree = "<group>"; };
 		C65A2B2B1F131DCC00BDF446 /* DZFoodContentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFoodContentData.h; sourceTree = "<group>"; };
 		C65A2B2C1F131DCC00BDF446 /* DZFoodContentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodContentData.m; sourceTree = "<group>"; };
+		C6616CAB1F1E1AA200CFB3C4 /* UIView+FooterLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FooterLine.h"; sourceTree = "<group>"; };
+		C6616CAC1F1E1AA200CFB3C4 /* UIView+FooterLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FooterLine.m"; sourceTree = "<group>"; };
+		C6616CAF1F1E444100CFB3C4 /* ExerciseListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListData.h; sourceTree = "<group>"; };
+		C6616CB01F1E444100CFB3C4 /* ExerciseListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListData.m; sourceTree = "<group>"; };
+		C6616CB21F1E481300CFB3C4 /* ExerciseTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseTableData.h; sourceTree = "<group>"; };
+		C6616CB31F1E481300CFB3C4 /* ExerciseTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseTableData.m; sourceTree = "<group>"; };
 		C6921C701F122536005EAC8F /* DZHKUFit(OC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DZHKUFit(OC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6921C741F122536005EAC8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C6921C761F122536005EAC8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,6 +171,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		C6616CAE1F1E440500CFB3C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C6616CAF1F1E444100CFB3C4 /* ExerciseListData.h */,
+				C6616CB01F1E444100CFB3C4 /* ExerciseListData.m */,
+				C6616CB21F1E481300CFB3C4 /* ExerciseTableData.h */,
+				C6616CB31F1E481300CFB3C4 /* ExerciseTableData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		C6921C671F122536005EAC8F = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +270,8 @@
 				C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */,
 				C6D629ED1F1D28D50029EF17 /* UIView+ExerciseShow.h */,
 				C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */,
+				C6616CAB1F1E1AA200CFB3C4 /* UIView+FooterLine.h */,
+				C6616CAC1F1E1AA200CFB3C4 /* UIView+FooterLine.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -285,6 +307,7 @@
 		C6921CB51F1236DE005EAC8F /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				C6616CAE1F1E440500CFB3C4 /* Model */,
 				C622AD571F1BAD5D00D84D53 /* View */,
 				C6D64C771F1B4B130052EAA9 /* Controller */,
 			);
@@ -523,13 +546,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6616CB41F1E481300CFB3C4 /* ExerciseTableData.m in Sources */,
 				C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */,
 				C6D64C731F1B48200052EAA9 /* DZSignInViewController.m in Sources */,
 				D2C347521F1713AE00E67C18 /* DZLoginViewController.m in Sources */,
+				C6616CAD1F1E1AA200CFB3C4 /* UIView+FooterLine.m in Sources */,
 				C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */,
 				C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */,
 				C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */,
 				C6D629F21F1D2BE20029EF17 /* ExerciseDetailViewController.m in Sources */,
+				C6616CB11F1E444100CFB3C4 /* ExerciseListData.m in Sources */,
 				C6921CA81F122ED0005EAC8F /* DZMainTabBarViewController.m in Sources */,
 				C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */,
 				D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */,

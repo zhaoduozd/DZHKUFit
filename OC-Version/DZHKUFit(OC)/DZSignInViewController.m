@@ -37,9 +37,9 @@
 - (void)setBasicData {
     _labelTitle = @[@"昵  称: *", @"邮  箱: *", @"密  码: *", @"确认密码: *"];
     _detailLabelContent = @[@" 4~20位字母，数字或中文的组合", @"", @" 8～16位字母，数字的组合", @""];
-    x0 = DZScreenW/10;
+    x0 = DZScreenW/20;
     y0 = 150;
-    wSignField = DZScreenW/5*4;
+    wSignField = DZScreenW/10*9;
     hSignField = DZScreenH;
 }
 
@@ -90,7 +90,7 @@
     }
     
     // add sign button
-    ybtn = ydl + 10;
+    ybtn = ydl;
     _siginButton = [UIButton DZDefaultBtnWithWidth:wbtn Height:hbtn xPos:xbtn yPos:ybtn Title:@"注册"];
     [_elementsField addSubview:_siginButton];
 }

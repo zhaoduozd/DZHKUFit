@@ -38,40 +38,96 @@
     return _foodContents[section].sectionTile;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UILabel *sectionHeader = [[UILabel alloc] init];
-//    sectionHeader.text = _foodContents[section].sectionTile;
-//    
-//    return sectionHeader;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *wrapper = [[UIView alloc] init];
+    UILabel *sectionHeader = [[UILabel alloc] init];
+    
+    wrapper.backgroundColor = AppDefaultBackgroundColor;
+    
+    sectionHeader.text = _foodContents[section].sectionTile;
+    sectionHeader.frame = CGRectMake(15, 0, DZScreenW, 40);
+    sectionHeader.backgroundColor = AppDefaultBackgroundColor;
+    sectionHeader.textColor = AppDefaultFontColor;
+    sectionHeader.font = [UIFont boldSystemFontOfSize:13];
+    
+    [wrapper addSubview:sectionHeader];
+    
+    return wrapper;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 40.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifer = @"dzid";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    UILabel *textlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, DZScreenW, 30)];
+    UILabel *detaillabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 30, DZScreenW, 20)];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        
+        UIView *cellview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DZScreenW, 50)];
+        UIImage *likeicon = [UIImage imageNamed:@"like"];
+        UIImageView *likeiconview = [[UIImageView alloc] initWithImage:likeicon];
+        //UIView *maskbtn = [[UIView alloc] initWithFrame:cellview.frame];
+        
+        cellview.backgroundColor = AppDefaultSubViewBackgroundColor;
+        
+        //设置text style
+        textlabel.font = [UIFont boldSystemFontOfSize:13];
+        textlabel.textColor = AppDefaultFontColor;
+        
+        detaillabel.adjustsFontSizeToFitWidth = NO;
+        detaillabel.font = [UIFont systemFontOfSize:10];
+        detaillabel.textColor = AppDefaultFontColor;
+        
+        SEL likeevent = @selector(likeIt:);
+        
+        likeiconview.frame = CGRectMake(DZScreenW-40, 5, 26, 26);
+        likeiconview.clipsToBounds = YES;
+        
+        [likeiconview setUserInteractionEnabled:YES];
+        //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SingleClick:)];
+
+        [likeiconview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:likeevent]];
+        
+        [cell.contentView addSubview:textlabel];
+        [cell.contentView addSubview:detaillabel];
+        [cell.contentView addSubview:likeiconview];
+        //[cell.contentView addSubview:maskbtn];
     }
-    cell.textLabel.text = _foodContents[indexPath.section].sectionData[indexPath.row].foodName;
-    cell.detailTextLabel.text = _foodContents[indexPath.section].sectionData[indexPath.row].foodCarhdr;
     
-    //设置text style
-    //UIFont *myFont = [ UIFont fontWithName: @"Arial" size: 18.0 ];
-    //cell.textLabel.font  = myFont;
-    cell.textLabel.adjustsFontSizeToFitWidth = NO;
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14.0];
+    NSString *name = _foodContents[indexPath.section].sectionData[indexPath.row].foodName;
+    NSString *calorie = _foodContents[indexPath.section].sectionData[indexPath.row].foodCalorie;
+    NSString *fat =  _foodContents[indexPath.section].sectionData[indexPath.row].foodFat;
+    NSString *protein = _foodContents[indexPath.section].sectionData[indexPath.row].foodProtein;
+    NSString *carhdr = _foodContents[indexPath.section].sectionData[indexPath.row].foodCarhdr;
     
-    cell.detailTextLabel.adjustsFontSizeToFitWidth = NO;
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:10];
-    cell.detailTextLabel.numberOfLines = 2;
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:51.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1];
+    NSString *foodContentString = [NSString stringWithFormat:@"%@/100g, %@/100g, %@/100g, %@/100g\n", calorie, fat, protein, carhdr];
     
+    NSLog(@"%@\n", [cell.contentView.subviews objectAtIndex:0]);
     
+    UILabel *tmplabel;
+    
+    tmplabel = [cell.contentView.subviews objectAtIndex:0];
+    tmplabel.text = name;
+    
+    tmplabel = [cell.contentView.subviews objectAtIndex:1];
+    tmplabel.text = foodContentString;
     
     return cell;
 }
@@ -94,24 +150,26 @@
         sectioni.sectionData = [[NSMutableArray alloc] init];
         
         // 1.section名字
-        NSString *tmpfoodname = [NSString stringWithFormat:@"FoodName%d",i];
+        NSString *tmpfoodname = [NSString stringWithFormat:@"果蔬类 %d",i];
         sectioni.sectionTile = tmpfoodname;
         
         // 2.section数据
-        for (int j = 0; j <= i+1; j++ ) {
+        for (int j = 0; j <= i; j++ ) {
             DZFoodContentData *tmpContentData = [[DZFoodContentData alloc] init];
-            tmpContentData.foodCalorie = [NSString stringWithFormat:@"%d/100g",j];//[tmpallnumber stringByAppendingString: tmpallunit];
-            tmpContentData.foodFat = [NSString stringWithFormat:@"%d/100g",j];//[tmpallnumber stringByAppendingString: tmpallunit];
-            tmpContentData.foodProtein = [NSString stringWithFormat:@"%d/100g",j];//[tmpallnumber stringByAppendingString: tmpallunit];
-            tmpContentData.foodCarhdr = [NSString stringWithFormat:@"%d/100g",j];//[tmpallnumber stringByAppendingString: tmpallunit];
-            tmpContentData.foodName = @"foodtestname";
+            tmpContentData.foodCalorie = [NSString stringWithFormat:@"能量:%dKcal",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodFat = [NSString stringWithFormat:@"脂肪:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodProtein = [NSString stringWithFormat:@"蛋白质:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodCarhdr = [NSString stringWithFormat:@"碳水:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodName = [NSString stringWithFormat:@"食物名称 %d & %d",i, j];
             [sectioni.sectionData addObject:tmpContentData];
         }
         [_foodContents addObject:sectioni];
     }
-    
-    //NSLog(@"%@", _foodContents);
-   // NSLog(@"sdjo");
+}
+
+- (void)likeIt:(UITapGestureRecognizer *) gestureRecognizer {
+    UIImageView *likeview = (UIImageView *)[gestureRecognizer view];
+    likeview.image = [UIImage imageNamed:@"likeit"];
 }
 
 @end

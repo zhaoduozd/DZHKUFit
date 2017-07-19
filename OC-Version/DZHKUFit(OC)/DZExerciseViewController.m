@@ -11,12 +11,18 @@
 @interface DZExerciseViewController ()
 
 @property(nonatomic, strong) UIScrollView *scrollRootView;
+@property(nonatomic, strong) NSMutableArray<ExerciseTableData *> *exerciseList;
 
 @end
 
 @implementation DZExerciseViewController {
     double yPosition;
     double xDefaultPosition;
+    
+    float btnW;
+    float btnH;
+    float totalScrollHeight;
+    float sectionTitleHeight;
 }
 
 - (void)viewDidLoad {
@@ -25,6 +31,8 @@
     yPosition = 0;
     
     [super viewDidLoad];
+    [self initdata];
+    [self request];
     [self setRootView];
     [self setExerciseWrapper];
     
@@ -32,33 +40,55 @@
 
 #pragma -mark 自定义函数
 
+-(void) initdata {
+    btnW = (DZScreenW - 45)/ 2;
+    btnH = btnW * 0.6;
+    totalScrollHeight = 0;
+    sectionTitleHeight = 30;
+}
+
 -(void)setRootView {
     _scrollRootView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     _scrollRootView.backgroundColor = AppDefaultBackgroundColor;
-    _scrollRootView.contentSize = CGSizeMake(DZScreenW, 2*DZScreenH);
+    _scrollRootView.contentSize = CGSizeMake(DZScreenW, DZScreenH);
     [self.view addSubview:_scrollRootView];
+}
+-(void)setScrollHeight:(float) height {
+    _scrollRootView.contentSize = CGSizeMake(DZScreenW, height);
 }
 
 - (void)setExerciseWrapper {
-    float sectionHeight = 400;
-    NSLog(@"123");
-    for (int i = 0; i < 10; i++) {
-        UIView *section = [self exerciseSection:@"腹部训练" xPos:0 yPos:yPosition Height: sectionHeight SectionNo: i];
+    
+    NSLog(@"%@", @"exercise wrapper");
+    
+    float sectionHeight = 0;
+    for (int i = 0; i < _exerciseList.count; i++) {
+        
+        ExerciseTableData *exerciseTableSection = [_exerciseList objectAtIndex:i];
+        NSString *sectionTitle = exerciseTableSection.sectionTile;
+        sectionHeight = ((exerciseTableSection.sectionData.count+1)/2) * (btnH + 10) + sectionTitleHeight;
+        
+        UIView *section = [self exerciseSection:sectionTitle xPos:0 yPos:yPosition Height: sectionHeight SectionNo: i];
         [_scrollRootView addSubview:section];
-        yPosition += (sectionHeight);
+        yPosition += (sectionHeight - sectionTitleHeight + 10);
+        
+        totalScrollHeight += sectionHeight + 10;
     }
+    [self setScrollHeight:totalScrollHeight];
 }
 
 - (UIView *)exerciseSection:(NSString *) sectionName xPos:(float) x yPos:(float)y Height:(float) height SectionNo:(int) secno {
+    
     //create an exercise section
     UIView *exerciseSection = [[UIView alloc] init];
     UILabel *sectionTitle = [self exerciseSectionName:sectionName];
     
-    //set button size
-    float btnW = (DZScreenW - 30)/ 2;
-    float btnH = btnW * 0.6;
-    float btnX = 5;
-    float btnY = 26;
+    //set button position
+    float btnX = 15;
+    float btnY = sectionTitleHeight;
+    
+    ExerciseTableData *exerciseTableSection = [_exerciseList objectAtIndex:secno];
+    NSMutableArray *exerciseBtns = exerciseTableSection.sectionData;
     
     exerciseSection.frame = CGRectMake(x, y, DZScreenW, height);
     exerciseSection.backgroundColor = AppDefaultSubViewBackgroundColor;
@@ -66,18 +96,22 @@
     exerciseSection.layer.borderColor = AppDefaultBorderColor;
     
     [exerciseSection addSubview:sectionTitle];
-    for (int i = 0; i < 6; i++) {
-        UIButton *tmpButton = [UIButton bigMaskButtonWithTitle:@"西西里卷腹" time:@"一组10分钟" calorie:@"78 Kcal" imageName:@"defaultPosition" xPos:btnX yPos:btnY Width:btnW Height:btnH];
+    
+    for (int i = 0; i < exerciseBtns.count; i++) {
+        
+        ExerciseListData *btn = [exerciseBtns objectAtIndex:i];
+        
+        UIButton *tmpButton = [UIButton bigMaskButtonWithTitle:btn.exerciseName time: btn.exerciseTime calorie:btn.exerciseCalorie imageName:btn.exerciseImage xPos:btnX yPos:btnY Width:btnW Height:btnH];
         
         SEL eventHandler = @selector(goToExerciseDetail);
         [tmpButton addTarget:self action:eventHandler forControlEvents:UIControlEventTouchUpInside];
         
         [exerciseSection addSubview:tmpButton];
         
-        btnX += (btnW + 10);
+        btnX += (btnW + 15);
         
         if((i + 1) % 2 == 0) {
-            btnX = 5;
+            btnX = 15;
             btnY += (btnH + 10);
         }
     }
@@ -87,11 +121,11 @@
 
 - (UILabel *)exerciseSectionName:(NSString *) sectionName {
     //create an label
-    float labelHeight = 26;
+    float labelHeight = sectionTitleHeight;
     UILabel *label = [[UILabel alloc] init];
-    label.font = [UIFont fontWithName:@"Arial" size:12];
+    label.font = [UIFont systemFontOfSize:13.0];
     label.text = sectionName;
-    label.frame = CGRectMake(xDefaultPosition, 0, DZScreenW, labelHeight);
+    label.frame = CGRectMake(15, 0, DZScreenW, labelHeight);
     label.textColor = AppDefaultFontColor;
     
     yPosition += labelHeight;
@@ -101,6 +135,37 @@
 - (void)goToExerciseDetail {
     ExerciseDetailViewController *exerciseUIView = [[ExerciseDetailViewController alloc] init];
     [self.navigationController pushViewController:exerciseUIView animated:YES];
+}
+
+- (void)request {
+    _exerciseList =[[NSMutableArray alloc] init];
+    
+    // 制作section数据模型
+    for (int i = 0; i < 10; i++) {
+        ExerciseTableData *sectioni = [ExerciseTableData section];
+        sectioni.sectionData = [[NSMutableArray alloc] init];
+        
+        // 1.section名字
+        NSString *tmpexercisename = [NSString stringWithFormat:@"腹部训练 %d",i];
+        sectioni.sectionTile = tmpexercisename;
+        
+        // 2.section数据
+        for (int j = 0; j <= i; j++ ) {
+            ExerciseListData *tmpContentData = [[ExerciseListData alloc] init];
+            tmpContentData.exerciseName = [NSString stringWithFormat:@"西西里卷腹 %d & %d",i, j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.exerciseTime = [NSString stringWithFormat:@"一组10分钟 %d & %d",i, j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.exerciseCalorie = [NSString stringWithFormat:@"78Kcal %d & %d",i, j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.exerciseImage = @"defaultPosition";//[tmpallnumber stringByAppendingString: tmpallunit];
+            [sectioni.sectionData addObject:tmpContentData];
+        }
+        
+        [_exerciseList addObject:sectioni];
+        
+        //NSLog(@"%lu",(unsigned long)_exerciseList.count);
+    }
+    
+    
+
 }
 
 @end
