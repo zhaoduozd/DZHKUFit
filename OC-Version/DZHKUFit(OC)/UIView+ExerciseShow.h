@@ -11,5 +11,6 @@
 @interface UIView (ExerciseShow)
 
 + (UIView *)exerciseShowViewWithTitle:(NSString *) title ImageName:(NSString *) imageName xPos:(float) x yPos:(float) y;
+//+ (UIView *) footerLineWithX:(float) x Y:(float) y;
 
 @end

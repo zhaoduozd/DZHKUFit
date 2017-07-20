@@ -18,6 +18,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = AppDefaultBackgroundColor;
+    if (_pageTitle != nil)  {
+        self.title = _pageTitle;
+    }
 }
 
 @end

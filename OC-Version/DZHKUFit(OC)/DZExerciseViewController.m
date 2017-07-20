@@ -7,6 +7,7 @@
 //
 
 #import "DZExerciseViewController.h"
+#import "DZUIButtonWithParameter+BigMaskButton.h"
 
 @interface DZExerciseViewController ()
 
@@ -29,6 +30,13 @@
     
     xDefaultPosition = 5;
     yPosition = 0;
+    
+    UIBarButtonItem * backButtonItem = [[UIBarButtonItem alloc] init];
+    backButtonItem.title = @"";
+    self.navigationItem.backBarButtonItem = backButtonItem;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.navigationController.navigationBar.translucent = NO;
     
     [super viewDidLoad];
     [self initdata];
@@ -101,9 +109,12 @@
         
         ExerciseListData *btn = [exerciseBtns objectAtIndex:i];
         
-        UIButton *tmpButton = [UIButton bigMaskButtonWithTitle:btn.exerciseName time: btn.exerciseTime calorie:btn.exerciseCalorie imageName:btn.exerciseImage xPos:btnX yPos:btnY Width:btnW Height:btnH];
+        DZUIButtonWithParameter *tmpButton = [DZUIButtonWithParameter bigMaskButtonWithTitle:btn.exerciseName time: btn.exerciseTime calorie:btn.exerciseCalorie imageName:btn.exerciseImage xPos:btnX yPos:btnY Width:btnW Height:btnH];
         
-        SEL eventHandler = @selector(goToExerciseDetail);
+        tmpButton.parameters = [[NSMutableDictionary alloc] init];
+        [tmpButton.parameters setObject:btn.exerciseName forKey:@"pageTitle"];
+        
+        SEL eventHandler = @selector(goToExerciseDetail:);
         [tmpButton addTarget:self action:eventHandler forControlEvents:UIControlEventTouchUpInside];
         
         [exerciseSection addSubview:tmpButton];
@@ -132,8 +143,10 @@
     return label;
 }
 
-- (void)goToExerciseDetail {
+- (void)goToExerciseDetail:(id) sender {
+    DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
     ExerciseDetailViewController *exerciseUIView = [[ExerciseDetailViewController alloc] init];
+    exerciseUIView.pageTitle = btn.parameters[@"pageTitle"];
     [self.navigationController pushViewController:exerciseUIView animated:YES];
 }
 

@@ -8,6 +8,7 @@
 
 #import "DZUIViewController.h"
 #import "UIView+ExerciseShow.h"
+#import "UIScrollView+ExercisePointsShow.h"
 
 @interface ExerciseDetailViewController : DZUIViewController
 

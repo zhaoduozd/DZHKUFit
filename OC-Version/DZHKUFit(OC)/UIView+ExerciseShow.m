@@ -29,14 +29,20 @@
     uiview.frame = CGRectMake(x, y, viewWidth, viewHeight);
     uiview.backgroundColor = AppDefaultSubViewBackgroundColor;
     
-    exerciseImageView.frame = CGRectMake(0, titleHeight, imageWidth, imageHeight);
+    if ([title isEqual: @""] || [title isEqual: nil]) {
+        exerciseImageView.frame = CGRectMake(0, 0, imageWidth, imageHeight);
+
+    } else {
+        viewTitle.frame = CGRectMake(5, 5, titleWidth, titleHeight);
+        viewTitle.text = title;
+        viewTitle.textColor = AppDefaultFontColor;
+        viewTitle.font = [UIFont systemFontOfSize:13];
+        
+        exerciseImageView.frame = CGRectMake(0, titleHeight, imageWidth, imageHeight);
+
+        [uiview addSubview:viewTitle];
+    }
     
-    viewTitle.frame = CGRectMake(5, 5, titleWidth, titleHeight);
-    viewTitle.text = title;
-    viewTitle.textColor = AppDefaultFontColor;
-    viewTitle.font = [UIFont systemFontOfSize:13];
-    
-    [uiview addSubview:viewTitle];
     [uiview addSubview:exerciseImageView];
     
     return uiview;

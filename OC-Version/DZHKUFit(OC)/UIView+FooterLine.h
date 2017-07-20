@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (FooterLine)
+
 +(UIView *) footerLineWithX:(float) x Y:(float) y;
+
 @end

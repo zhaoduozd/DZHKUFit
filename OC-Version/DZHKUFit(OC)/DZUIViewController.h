@@ -10,4 +10,6 @@
 
 @interface DZUIViewController : UIViewController
 
+@property(nonatomic, copy) NSString *pageTitle;
+
 @end

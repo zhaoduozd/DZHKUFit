@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>reminder</key>
+		<false/>
 		<key>username</key>
 		<string>Amy</string>
 		<key>password</key>

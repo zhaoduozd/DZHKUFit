@@ -31,6 +31,7 @@
 
     [self addChildVC];
     self.tabBar.tintColor = AppDefaultColor;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 
@@ -38,20 +39,24 @@
     for (int i = 0; i<_Titles.count; i++) {
         Class class = NSClassFromString(_ClassNames[i]);
         UIViewController *vc = [[class alloc] init];
+        
         vc.title = _Titles[i];
+        
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        
         nav.tabBarItem.title = _Titles[i];
         nav.tabBarItem.image = [UIImage imageNamed:_Icons[i]];
+        
         //nav.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",_Icons[i]]];
         
         // 导航栏背景色
         [nav.navigationBar setBarTintColor:AppDefaultBarTintColor];
+        nav.navigationBar.translucent = NO;
         [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]];
         
-        if([_Titles[i] isEqual: @"我"]) {
-            nav.navigationBar.hidden = YES;
-        }
-        
+//        if([_Titles[i] isEqual: @"我"]) {
+//            nav.navigationItem.title = @"";
+//        }
         
         [self addChildViewController:nav];
     }
