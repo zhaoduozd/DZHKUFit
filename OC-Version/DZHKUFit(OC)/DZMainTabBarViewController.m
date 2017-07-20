@@ -48,6 +48,10 @@
         [nav.navigationBar setBarTintColor:AppDefaultBarTintColor];
         [nav.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil]];
         
+        if([_Titles[i] isEqual: @"我"]) {
+            nav.navigationBar.hidden = YES;
+        }
+        
         
         [self addChildViewController:nav];
     }

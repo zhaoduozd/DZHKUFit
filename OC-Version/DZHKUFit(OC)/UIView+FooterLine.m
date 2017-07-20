@@ -10,4 +10,11 @@
 
 @implementation UIView (FooterLine)
 
++(UIView *) footerLineWithX:(float) x Y:(float) y {
+    UIView *uiview = [[UIView alloc] initWithFrame:CGRectMake(x, y, DZScreenW, 1)];
+    uiview.backgroundColor = AppDefaultBorderColorUI;
+    return uiview;
+    
+}
+
 @end

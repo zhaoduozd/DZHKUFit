@@ -60,7 +60,8 @@
     float titleHeight = 26;
     float exerciseRecomHeight = DZScreenW * 0.6;
     float exerciseListHeight = 70;
-    float thisHeight = titleHeight + exerciseRecomHeight + exerciseListHeight;
+    float exercisePointHeight = 180;
+    float thisHeight = titleHeight + exerciseRecomHeight + exerciseListHeight + exercisePointHeight;
     
     _exerciseRecom = [[UIView alloc] init];
     _exerciseRecom.frame = CGRectMake(-1, 0, DZScreenW + 3, thisHeight);
@@ -72,11 +73,13 @@
     UILabel *recomTitle = [self recomTitleLabel:@"今日推荐运动"];
     UIImageView *exerciseView = [self exerciseShow];
     UIScrollView *exerciseList = [self horizontalScrollWithWidth:DZScreenW Height:exerciseListHeight andTitle:@"exercise"];
+    UIScrollView *exercisePoint = [UIScrollView exercisePointsShowWithHeigth:exercisePointHeight yPos:yPosition exerciseDescription:@"卷腹时要呼气，动作还原时要吸气\n感受腹肌用力，控制脖子不要用力\n" exerciseName:@"西西里卷腹"];
     
     //add UI elements into exerciseRecom
     [_exerciseRecom addSubview:recomTitle];
     [_exerciseRecom addSubview:exerciseView];
     [_exerciseRecom addSubview:exerciseList];
+    [_exerciseRecom addSubview:exercisePoint];
     
     //add exerciseRecom into Root View
     [_scrollRootView addSubview:_exerciseRecom];
@@ -147,6 +150,7 @@
     
     float btnXPos = 5;
     UIScrollView *scrollView = [[UIScrollView alloc] init];
+    //UIView *footerline = [UIView footerLineWithX:5 Y:height-3];
     
     scrollView.frame = CGRectMake(0, yPosition, width, height);
     scrollView.backgroundColor = AppDefaultSubViewBackgroundColor;
@@ -158,6 +162,7 @@
     }
     
     yPosition += height;
+    //[scrollView addSubview:footerline];
     return scrollView;
 }
 

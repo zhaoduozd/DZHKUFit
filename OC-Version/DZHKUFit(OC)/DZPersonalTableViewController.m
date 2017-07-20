@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setData];
+    NSLog(@"%@", self.view.subviews);
     self.view.backgroundColor = AppDefaultSubViewBackgroundColor;
     self.tableView.separatorStyle = NO;
 }
@@ -83,14 +84,14 @@
         // set cell
         if (indexPath.section == 0) {
             
-            float imageHeight = firstSectionHeight - 20;
+            float imageHeight = firstSectionHeight - 40;
             UIImage *userimage = [UIImage imageNamed:tmp[1]];
             UIImageView *userimageview = [[UIImageView alloc] initWithImage:userimage];
             UIButton *personbtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, DZScreenW, firstSectionHeight)];
             
             UILabel *username = [[UILabel alloc] initWithFrame:CGRectMake(DZScreenW/2, 0, DZScreenW/2, firstSectionHeight)];
             
-            userimageview.frame = CGRectMake(30, 10, imageHeight, imageHeight);
+            userimageview.frame = CGRectMake(30, 20, imageHeight, imageHeight);
             [userimageview.layer setCornerRadius: imageHeight/2];
             userimageview.clipsToBounds = YES;
             
@@ -133,7 +134,7 @@
 
 - (void) setData {
     _cellTitleList = @[@[@"Miss Dora", @"defaultPosition"],@[@"今日运动推荐", @"今日饮食推荐"], @[@"运动历史", @"赞过的食物"], @[@"打卡", @"设置运动提醒"], @[@"身体数据"], @[@"退出登录"]];
-    firstSectionHeight = 120.0;
+    firstSectionHeight = 140.0;
     cellHeight = 40.0;
     sectionFooterHeight = 10.0;
 }
