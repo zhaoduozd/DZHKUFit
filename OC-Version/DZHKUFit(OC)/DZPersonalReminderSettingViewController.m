@@ -88,7 +88,7 @@
 
 - (void) initReminderButton {
     _addReminderButton = [DZUIButtonWithParameter DZParameterLineBtnWithWidth:DZScreenW/3 Height:30 xPos:DZScreenW/3 yPos:70 Title:@"+ 添加运动提醒"];
-    [_addReminderButton.parameters setObject:[[NSNumber alloc] initWithInteger:-1] forKey:@"reminderNo"];
+    [_addReminderButton.parameters setObject:[[NSNumber alloc] initWithInteger:0] forKey:@"reminderNo"];
     [_addReminderButton addTarget:self action:@selector(GoToCreateReminder:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_addReminderButton];
@@ -101,7 +101,11 @@
     }
     
     if (isAddReminderListController) {
-        _reminderList.view.hidden = NO;
+        if (_reminderList.reminderListData.count - 1 <= 0) {
+            _reminderList.view.hidden = YES;
+        } else {
+            _reminderList.view.hidden = NO;
+        }
         _addReminderButton.hidden = NO;
         return;
     }
@@ -118,6 +122,12 @@
     [self.view addSubview:_reminderList.view];
     
     isAddReminderListController = YES;
+    
+    if (_reminderList.reminderListData.count - 1 <= 0) {
+        _reminderList.view.hidden = YES;
+    } else if (_reminderList.reminderListData.count > 1) {
+        _reminderList.view.hidden = NO;
+    }
 }
 
 - (void) ReminderSwitchOnOff:(id) sender {

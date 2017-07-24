@@ -10,10 +10,12 @@
 #import "DZReminderData.h"
 
 @interface DZReminderListController ()
-@property(nonatomic, strong) NSMutableArray<NSDictionary *> *reminderListData;
+
 @end
 
-@implementation DZReminderListController
+@implementation DZReminderListController {
+    NSInteger x;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,7 +23,6 @@
     self.tableView.separatorStyle = NO;
     
     [self requestData];
-    [self setUI];
 }
 
 
@@ -32,7 +33,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _reminderListData.count;
+    return _reminderListData.count - 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,20 +59,21 @@
         [cell addSubview:switchview];
     }
     
-//    NSString *clock = _reminderListData[indexPath.row].remindTime;
-//    NSMutableArray *days = _reminderListData[indexPath.row].remindDays;
-//    NSString *daysString = @"";
-//    UILabel *tmplabel;
-//    
-//    for (int i = 0; i < days.count; i++) {
-//        daysString = [daysString stringByAppendingFormat:@"%@ ", days[i]];
-//    }
-//    
-//    tmplabel = [cell.contentView.subviews objectAtIndex:0];
-//    tmplabel.text = clock;
-//    
-//    tmplabel = [cell.contentView.subviews objectAtIndex:1];
-//    tmplabel.text = daysString;
+    NSMutableDictionary *tmpcell = _reminderListData[indexPath.row+1];
+    
+    NSString *clock = [tmpcell objectForKey:@"time"];
+    NSString *daysString = [tmpcell objectForKey:@"daysString"];
+    NSString *labelString = [tmpcell objectForKey:@"selectedLabel"];
+    UILabel *tmplabel;
+    
+    daysString = [labelString stringByAppendingFormat:@", %@ ", daysString];
+
+    
+    tmplabel = [cell.contentView.subviews objectAtIndex:0];
+    tmplabel.text = clock;
+    
+    tmplabel = [cell.contentView.subviews objectAtIndex:1];
+    tmplabel.text = daysString;
     
     
     return cell;
@@ -86,21 +88,27 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *filePath;
     
+    filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
+    
     if (![defaults boolForKey:@"reminderList"]) {
         
-        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
+        NSMutableDictionary *defaultReminder = [[NSMutableDictionary alloc] init];
+        [defaultReminder setObject:@"" forKey:@"time"];
+        [defaultReminder setObject:@[@NO, @NO, @NO, @NO, @NO, @NO, @NO] forKey:@"days"];
+        [defaultReminder setObject:@[@NO, @NO, @NO, @NO] forKey:@"labels"];
+        [defaultReminder setObject:@"OFF" forKey:@"switchOn"];
         
+        [_reminderListData addObject:defaultReminder];
         [_reminderListData writeToFile:filePath atomically:YES];
         
         [defaults setBool:YES forKey:@"reminderList"];
     }
     
     _reminderListData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-    
+    if (_reminderListData.count == 1) {
+        self.view.hidden = YES;
+    }
 }
 
-- (void) setUI {
-    
-}
 
 @end

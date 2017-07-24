@@ -13,6 +13,7 @@
 @property(nonatomic, strong) NSArray *days;
 @property(nonatomic, strong) NSArray *labels;
 @property(nonatomic, strong) NSMutableDictionary *dataList;
+@property(nonatomic, strong) NSMutableArray *reminderListData;
 
 @end
 
@@ -22,26 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleDone target:self action:@selector(AddReminder:)];
+    
     [self initValues];
     [self requestData];
 }
 
-//- (void) testPlist {
-//    
-//    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"test", nil];
-//    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/demo.plist"];
-//
-//    [array writeToFile:filePath atomically:YES];
-//    
-//    NSMutableArray *testDic= [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-//    
-//    
-//    
-//    NSLog(@"%@", testDic);
-//    
-//    
-//
-//}
+
 
 
 #pragma mark - Dora's functions
@@ -55,25 +44,28 @@
 }
 
 - (void) requestData {
-//    NSMutableArray<NSDictionary *> *reminderListData = [[NSMutableArray alloc] init];
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSString *filePath;
-//    
-//    if (![defaults boolForKey:@"reminderList"]) {
-//        NSMutableDictionary *defaultReminder = [[NSMutableDictionary alloc] init];
-//        
-//        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
-//        
-//        //defaultReminder setObject:<#(nonnull id)#> forKey:<#(nonnull id<NSCopying>)#>
-//        
-//        
-//        [reminderListData writeToFile:filePath atomically:YES];
-//        
-//        [defaults setBool:YES forKey:@"reminderList"];
-//    }
-//    
-//    reminderListData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+    _reminderListData = [[NSMutableArray alloc] init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *filePath;
     
+    filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
+    
+    if (![defaults boolForKey:@"reminderList"]) {
+        
+        NSMutableDictionary *defaultReminder = [[NSMutableDictionary alloc] init];
+        [defaultReminder setObject:@"" forKey:@"time"];
+        [defaultReminder setObject:@[@NO, @NO, @NO, @NO, @NO, @NO, @NO] forKey:@"days"];
+        [defaultReminder setObject:@[@NO, @NO, @NO, @NO] forKey:@"labels"];
+        [defaultReminder setObject:@"OFF" forKey:@"switchOn"];
+        
+        [_reminderListData addObject:defaultReminder];
+        [_reminderListData writeToFile:filePath atomically:YES];
+        
+        [defaults setBool:YES forKey:@"reminderList"];
+    }
+    
+    _reminderListData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+    _dataList = _reminderListData[_reminderNo];
 }
 
 
@@ -131,25 +123,35 @@
         [cell.contentView addSubview: picker];
         
     } else {
-        if (indexPath.section == 1) {
-            cell.textLabel.text = _days[indexPath.row];
-        } else {
-            cell.textLabel.text = _labels[indexPath.row];
-        }
         
         cell.textLabel.textColor = AppDefaultFontColor;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         
         DZIconsImageView *check = [DZIconsImageView DZIconWithXPos:DZScreenW-31 yPos:10 IconName:@"check"];
         DZUIButtonWithParameter *btn = [[DZUIButtonWithParameter alloc] initWithFrame:CGRectMake(0, 0, DZScreenW, 40)];
-        NSNumber *checkDay = [NSNumber numberWithInteger:indexPath.row];
         
-        check.hidden = YES;
+        
+        if([[[_dataList objectForKey:@"days"] objectAtIndex:indexPath.row] boolValue]) {
+            check.hidden = NO;
+        } else {
+            check.hidden = YES;
+        }
+        
         btn.parameters = [[NSMutableDictionary alloc] init];
         [btn.parameters setObject:check forKey:@"checkItem"];
-        [btn.parameters setObject:checkDay forKey:@"checkDay"];
-        [btn addTarget:self action:@selector(toCheck:) forControlEvents:UIControlEventTouchUpInside];
         
+        
+        if (indexPath.section == 1) {
+            cell.textLabel.text = _days[indexPath.row];
+            NSNumber *checkDay = [NSNumber numberWithInteger:indexPath.row];
+            [btn.parameters setObject:checkDay forKey:@"checkDay"];
+            [btn addTarget:self action:@selector(toCheckDays:) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            cell.textLabel.text = _labels[indexPath.row];
+            NSString *labelString = _labels[indexPath.row];
+            [btn.parameters setObject:labelString forKey:@"checkLabel"];
+            [btn addTarget:self action:@selector(toCheckLabels:) forControlEvents:UIControlEventTouchUpInside];
+        }
         [cell addSubview:btn];
         [cell addSubview:check];
 
@@ -162,16 +164,54 @@
     return 2;
 }
 
-- (void) toCheck:(id) sender {
+- (void) toCheckDays:(id) sender {
+    DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
+    DZIconsImageView *check = [btn.parameters objectForKey:@"checkItem"];
+    NSNumber *checkDay = [btn.parameters objectForKey:@"checkDay"];
+    
+    if (check.hidden) {
+        check.hidden = NO;
+        [[_dataList objectForKey:@"days"] setObject:@YES atIndexedSubscript:checkDay.integerValue];
+    } else {
+        check.hidden = YES;
+        [[_dataList objectForKey:@"days"] setObject:@NO atIndexedSubscript:checkDay.integerValue];
+    }
+    
+    NSLog(@"%@", [_dataList objectForKey:@"days"]);
+}
+
+- (void) toCheckLabels:(id) sender {
     DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
     DZIconsImageView *check = [btn.parameters objectForKey:@"checkItem"];
     NSNumber *checkDay = [btn.parameters objectForKey:@"checkDay"];
     
     check.hidden = NO;
     
-    //[_dayChecked setObject:@YES atIndexedSubscript:checkDay.integerValue];
-    //NSLog(@"%@", _dayChecked);
+    }
+
+- (void) AddReminder:(id) sender {
+    DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
+    DZIconsImageView *check = [btn.parameters objectForKey:@"checkItem"];
+    
+    
 }
+
+//- (void) testPlist {
+//
+//    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"test", nil];
+//    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/demo.plist"];
+//
+//    [array writeToFile:filePath atomically:YES];
+//
+//    NSMutableArray *testDic= [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+//
+//
+//
+//    NSLog(@"%@", testDic);
+//
+//
+//
+//}
 
 
 @end

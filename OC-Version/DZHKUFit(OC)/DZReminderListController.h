@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DZReminderListController : UITableViewController
-
+@property(nonatomic, strong) NSMutableArray<NSMutableDictionary *> *reminderListData;
 @end
