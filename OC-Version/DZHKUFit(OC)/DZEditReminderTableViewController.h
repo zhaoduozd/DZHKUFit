@@ -10,4 +10,6 @@
 
 @interface DZEditReminderTableViewController : UITableViewController
 
+@property(nonatomic, assign) NSInteger reminderNo;
+
 @end

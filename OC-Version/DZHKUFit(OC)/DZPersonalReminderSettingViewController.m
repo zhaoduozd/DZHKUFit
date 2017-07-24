@@ -14,52 +14,47 @@
 #import "DZEditReminderTableViewController.h"
 
 @interface DZPersonalReminderSettingViewController ()
-
 @property(nonatomic, strong) UISwitch *reminderSwitch;
-@property(nonatomic, strong) UIButton *addReminder;
+@property(nonatomic, strong) DZUIButtonWithParameter *addReminderButton;
 @property(nonatomic, strong) DZReminderListController *reminderList;
-@property(nonatomic, assign) BOOL isAddReminderListController;
-
-
-
+@property(nonatomic, strong) NSString *reminderOn;
 @end
 
 @implementation DZPersonalReminderSettingViewController {
-    bool reminderOpen;
     float reminderSwitchWidth;
     float reminderSwitchHeight;
     float reminderSwitchCellHeight;
     float reminderCellHeight;
+    BOOL isAddReminderListController;
+    NSUserDefaults *defaults;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setInitValues];
-    [self setUI];
     
     UIBarButtonItem * backButtonItem = [[UIBarButtonItem alloc] init];
     backButtonItem.title = @"";
     self.navigationItem.backBarButtonItem = backButtonItem;
+    
+    [self initValues];
+    [self initUI];
 }
 
-- (void) setInitValues {
+- (void) initValues {
     reminderSwitchCellHeight = 40;
     reminderCellHeight = 50;
     reminderSwitchHeight = 20;
     reminderSwitchWidth = 30;
-    reminderOpen = NO;
-    _isAddReminderListController = NO;
+    isAddReminderListController = NO;
+    _reminderOn = @"reminderOn";
 }
 
-- (void) setUI {
-    [self addReminderSwitch];
-    [self addReminderButton];
-    if (reminderOpen == YES) {
-        [self setReminders];
-    }
+- (void) initUI {
+    [self initReminderSwitchCell];
+    [self initReminders];
 }
 
-- (void) addReminderSwitch {
+- (void) initReminderSwitchCell {
     UIView *footerLine = [UIView SeperatorLineWithX:0 Y:0];
     UIView *headerLine = [UIView SeperatorLineWithX:0 Y:reminderSwitchCellHeight];
     UIView *reminderSwitchCell = [[UIView alloc] initWithFrame:CGRectMake(0, 10, DZScreenW, reminderSwitchCellHeight)];
@@ -67,61 +62,85 @@
     
     reminderSwitchCell.backgroundColor = AppDefaultSubViewBackgroundColor;
     
-    _reminderSwitch = [UISwitch defaultSwitchWithY:0];
-    [_reminderSwitch setOn:reminderOpen];
-    
-    
-    [_reminderSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventTouchUpInside];
-    
     [reminderSwitchCell addSubview:footerLine];
     [reminderSwitchCell addSubview:headerLine];
-    [reminderSwitchCell addSubview:_reminderSwitch];
     [reminderSwitchCell addSubview:label];
+    
+    [self initReminderSwitch];
+    [reminderSwitchCell addSubview:_reminderSwitch];
     
     [self.view addSubview:reminderSwitchCell];
 }
 
-- (void) addReminderButton {
-    self.addReminder = [UIButton DZDefaultLineBtnWithWidth:DZScreenW/3 Height:30 xPos:DZScreenW/3 yPos:70 Title:@"+ 添加运动提醒"];
-    [_addReminder addTarget:self action:@selector(gotoCreateReminder:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.addReminder];
+- (void) initReminderSwitch {
+    defaults = [NSUserDefaults standardUserDefaults];
+    _reminderSwitch = [UISwitch defaultSwitchWithY:0];
+    
+    if ( [defaults objectForKey:_reminderOn] == nil ) {
+        [_reminderSwitch setOn:YES];
+        [defaults setBool:YES forKey:_reminderOn];
+    } else {
+        [_reminderSwitch setOn:[defaults boolForKey:_reminderOn]];
+    }
+    
+    [_reminderSwitch addTarget:self action:@selector(ReminderSwitchOnOff:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void) setReminders {
+- (void) initReminderButton {
+    _addReminderButton = [DZUIButtonWithParameter DZParameterLineBtnWithWidth:DZScreenW/3 Height:30 xPos:DZScreenW/3 yPos:70 Title:@"+ 添加运动提醒"];
+    [_addReminderButton.parameters setObject:[[NSNumber alloc] initWithInteger:-1] forKey:@"reminderNo"];
+    [_addReminderButton addTarget:self action:@selector(GoToCreateReminder:) forControlEvents:UIControlEventTouchUpInside];
     
-//    if (_isAddReminderListController) {
-//        _reminderList.view.hidden = NO;
-//        return;
-//    }
+    [self.view addSubview:_addReminderButton];
+}
+
+- (void) initReminders {
+
+    if (!_reminderSwitch.isOn) {
+        return;
+    }
+    
+    if (isAddReminderListController) {
+        _reminderList.view.hidden = NO;
+        _addReminderButton.hidden = NO;
+        return;
+    }
+    
+    [self initReminderButton];
+    
     _reminderList = [[DZReminderListController alloc] init];
     
     CGRect frame = CGRectMake(0, 120, _reminderList.view.frame.size.width, _reminderList.view.frame.size.height);
     
     _reminderList.view.frame = frame;
     
-    //reminderList.view.backgroundColor = [UIColor redColor];
-    
     [self addChildViewController:_reminderList];
     [self.view addSubview:_reminderList.view];
-    _isAddReminderListController = YES;
+    
+    isAddReminderListController = YES;
 }
 
-- (void) switchAction:(id) sender {
+- (void) ReminderSwitchOnOff:(id) sender {
     UISwitch *switchsender = (UISwitch *)sender;
     
+    
     if (switchsender.isOn) {
-        [self setReminders];
+        [self initReminders];
+        [defaults setBool:YES forKey:_reminderOn];
     } else {
         _reminderList.view.hidden = YES;
+        _addReminderButton.hidden = YES;
+        [defaults setBool:NO forKey:_reminderOn];
     }
+    
+    [defaults synchronize];
 }
 
-- (void) gotoCreateReminder:(id) sender {
+- (void) GoToCreateReminder:(id) sender {
+    DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
     DZEditReminderTableViewController *vc = [[DZEditReminderTableViewController alloc] init];
+    vc.reminderNo = [[btn.parameters objectForKey:@"reminderNo"] integerValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
-
 
 @end

@@ -10,7 +10,7 @@
 #import "DZReminderData.h"
 
 @interface DZReminderListController ()
-@property(nonatomic, strong) NSMutableArray<DZReminderData *> *reminderListData;
+@property(nonatomic, strong) NSMutableArray<NSDictionary *> *reminderListData;
 @end
 
 @implementation DZReminderListController
@@ -58,20 +58,20 @@
         [cell addSubview:switchview];
     }
     
-    NSString *clock = _reminderListData[indexPath.row].remindTime;
-    NSMutableArray *days = _reminderListData[indexPath.row].remindDays;
-    NSString *daysString = @"";
-    UILabel *tmplabel;
-    
-    for (int i = 0; i < days.count; i++) {
-        daysString = [daysString stringByAppendingFormat:@"%@ ", days[i]];
-    }
-    
-    tmplabel = [cell.contentView.subviews objectAtIndex:0];
-    tmplabel.text = clock;
-    
-    tmplabel = [cell.contentView.subviews objectAtIndex:1];
-    tmplabel.text = daysString;
+//    NSString *clock = _reminderListData[indexPath.row].remindTime;
+//    NSMutableArray *days = _reminderListData[indexPath.row].remindDays;
+//    NSString *daysString = @"";
+//    UILabel *tmplabel;
+//    
+//    for (int i = 0; i < days.count; i++) {
+//        daysString = [daysString stringByAppendingFormat:@"%@ ", days[i]];
+//    }
+//    
+//    tmplabel = [cell.contentView.subviews objectAtIndex:0];
+//    tmplabel.text = clock;
+//    
+//    tmplabel = [cell.contentView.subviews objectAtIndex:1];
+//    tmplabel.text = daysString;
     
     
     return cell;
@@ -81,17 +81,22 @@
 #pragma Dora functions
 
 - (void) requestData {
+    
     _reminderListData = [[NSMutableArray alloc] init];
-    DZReminderData *tmpdata = [[DZReminderData alloc] init];
-    tmpdata.remindDays = [[NSMutableArray alloc] init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *filePath;
     
-    [tmpdata.remindDays addObject:@"Sunday"];
-    [tmpdata.remindDays addObject:@"Friday"];
-    tmpdata.remindTime = @"8:00";
-    [_reminderListData addObject:tmpdata];
-    [_reminderListData addObject:tmpdata];
+    if (![defaults boolForKey:@"reminderList"]) {
+        
+        filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
+        
+        [_reminderListData writeToFile:filePath atomically:YES];
+        
+        [defaults setBool:YES forKey:@"reminderList"];
+    }
     
-    //NSLog(@"%@", tmpdata.remindDays);
+    _reminderListData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+    
 }
 
 - (void) setUI {
