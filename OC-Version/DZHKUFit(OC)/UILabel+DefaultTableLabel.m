@@ -10,8 +10,8 @@
 
 @implementation UILabel (DefaultTableLabel)
 
-+ (UILabel *)defaultTableLabelWithText:(NSString *) text yPos:(float) y isBold:(BOOL)bold {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, y, DZScreenW, 40)];
++ (UILabel *)DZDefaultTableLabelWithText:(NSString *)text yPos:(float)y Height:(float)height IsBold:(BOOL)bold {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, y, DZScreenW, height)];
     
     label.text = text;
     label.textColor = AppDefaultFontColor;
@@ -20,6 +20,22 @@
         label.font = [UIFont boldSystemFontOfSize:13];
     } else {
         label.font = [UIFont systemFontOfSize:13];
+    }
+    
+    return label;
+}
+
++ (UILabel *)DZDefaultTableDetailLabelWithText:(NSString *)text yPos:(float)y Height:(float)height IsBold:(BOOL)bold {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, y, DZScreenW, height)];
+    
+    label.text = text;
+    label.textColor = AppDefaultFontColor;
+    label.adjustsFontSizeToFitWidth = NO;
+    
+    if (bold) {
+        label.font = [UIFont boldSystemFontOfSize:10];
+    } else {
+        label.font = [UIFont systemFontOfSize:10];
     }
     
     return label;

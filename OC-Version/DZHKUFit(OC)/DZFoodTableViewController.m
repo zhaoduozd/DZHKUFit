@@ -61,7 +61,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
+    return 50.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,46 +69,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifer = @"dzid";
+    static NSString *identifer = @"foodlisttabelcell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
-    UILabel *textlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, DZScreenW, 30)];
-    UILabel *detaillabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 30, DZScreenW, 20)];
+    DZFoodContentData *tmp = _foodContents[indexPath.section].sectionData[indexPath.row];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        
-        UIView *cellview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, DZScreenW, 50)];
-        UIImage *likeicon = [UIImage imageNamed:@"like"];
-        UIImageView *likeiconview = [[UIImageView alloc] initWithImage:likeicon];
-        //UIView *maskbtn = [[UIView alloc] initWithFrame:cellview.frame];
-        
-        cellview.backgroundColor = AppDefaultSubViewBackgroundColor;
-        
-        //设置text style
-        textlabel.font = [UIFont boldSystemFontOfSize:13];
-        textlabel.textColor = AppDefaultFontColor;
-        
-        detaillabel.adjustsFontSizeToFitWidth = NO;
-        detaillabel.font = [UIFont systemFontOfSize:10];
-        detaillabel.textColor = AppDefaultFontColor;
+
+        cell = [UITableViewCell DZDetailCellWithTextHeight:26 DetailHeight:26 TextSize:13 DetailSize:10 Text:@"" Detail:@"" Reuseid:identifer];
+        DZIconsImageView *likeiconview = [DZIconsImageView DZLikeIconWithXPos:DZScreenW-40 yPos:5 IsLike:tmp.like];
         
         SEL likeevent = @selector(likeIt:);
-        
-        likeiconview.frame = CGRectMake(DZScreenW-40, 5, 26, 26);
-        likeiconview.clipsToBounds = YES;
-        
-        [likeiconview setUserInteractionEnabled:YES];
-        //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SingleClick:)];
-
         [likeiconview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:likeevent]];
-        
-        [cell.contentView addSubview:textlabel];
-        [cell.contentView addSubview:detaillabel];
         [cell.contentView addSubview:likeiconview];
-        //[cell.contentView addSubview:maskbtn];
     }
     
     NSString *name = _foodContents[indexPath.section].sectionData[indexPath.row].foodName;
@@ -118,9 +91,6 @@
     NSString *carhdr = _foodContents[indexPath.section].sectionData[indexPath.row].foodCarhdr;
     
     NSString *foodContentString = [NSString stringWithFormat:@"%@/100g, %@/100g, %@/100g, %@/100g\n", calorie, fat, protein, carhdr];
-    
-    NSLog(@"%@\n", [cell.contentView.subviews objectAtIndex:0]);
-    
     UILabel *tmplabel;
     
     tmplabel = [cell.contentView.subviews objectAtIndex:0];
@@ -161,6 +131,11 @@
             tmpContentData.foodProtein = [NSString stringWithFormat:@"蛋白质:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
             tmpContentData.foodCarhdr = [NSString stringWithFormat:@"碳水:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
             tmpContentData.foodName = [NSString stringWithFormat:@"食物名称 %d & %d",i, j];
+            if (j*i % 3 == 0) {
+                tmpContentData.like = YES;
+            } else {
+                tmpContentData.like = NO;
+            }
             [sectioni.sectionData addObject:tmpContentData];
         }
         [_foodContents addObject:sectioni];

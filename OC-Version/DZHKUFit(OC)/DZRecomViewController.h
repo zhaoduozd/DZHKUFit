@@ -10,7 +10,6 @@
 #import "DZUIViewController.h"
 #import "UIView+RecomFood.h"
 #import "UIScrollView+ExercisePointsShow.h"
-#import "UIView+FooterLine.h"
 
 @interface DZRecomViewController : DZUIViewController
 

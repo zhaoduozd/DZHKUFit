@@ -1,14 +1,18 @@
 //
-//  DZPersonalFoodFavoratesViewController.m
+//  DZPersonalFoodFavoritesViewController.m
 //  DZHKUFit(OC)
 //
-//  Created by Dora Zhao on 20/7/2017.
+//  Created by Dora Zhao on 23/7/2017.
 //  Copyright © 2017 Duo Zhao. All rights reserved.
 //
 
 #import "DZPersonalFoodFavoritesViewController.h"
+#import "DZFoodContentData.h"
+#import "DZTableSectionData.h"
 
 @interface DZPersonalFoodFavoritesViewController ()
+
+@property(nonatomic,strong) NSMutableArray<DZTableSectionData *> *foodContents;
 
 @end
 
@@ -16,22 +20,129 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = _pageTitle;
+    
+    [self initElements];
+    [self request];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _foodContents.count;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _foodContents[section].sectionData.count;
 }
-*/
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return _foodContents[section].sectionTile;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *wrapper = [[UIView alloc] init];
+    UILabel *sectionHeader = [[UILabel alloc] init];
+    
+    wrapper.backgroundColor = AppDefaultBackgroundColor;
+    
+    sectionHeader.text = _foodContents[section].sectionTile;
+    sectionHeader.frame = CGRectMake(15, 0, DZScreenW, 40);
+    sectionHeader.backgroundColor = AppDefaultBackgroundColor;
+    sectionHeader.textColor = AppDefaultFontColor;
+    sectionHeader.font = [UIFont boldSystemFontOfSize:13];
+    
+    [wrapper addSubview:sectionHeader];
+    
+    return wrapper;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identifer = @"foodlisttabelcell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    DZFoodContentData *tmp = _foodContents[indexPath.section].sectionData[indexPath.row];
+    
+    if (cell == nil) {
+        
+        cell = [UITableViewCell DZDetailCellWithTextHeight:26 DetailHeight:26 TextSize:13 DetailSize:10 Text:@"" Detail:@"" Reuseid:identifer];
+        DZIconsImageView *likeiconview = [DZIconsImageView DZLikeIconWithXPos:DZScreenW-40 yPos:5 IsLike:tmp.like];
+        
+        SEL likeevent = @selector(likeIt:);
+        [likeiconview addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:likeevent]];
+        [cell.contentView addSubview:likeiconview];
+    }
+    
+    NSString *name = _foodContents[indexPath.section].sectionData[indexPath.row].foodName;
+    NSString *calorie = _foodContents[indexPath.section].sectionData[indexPath.row].foodCalorie;
+    NSString *fat =  _foodContents[indexPath.section].sectionData[indexPath.row].foodFat;
+    NSString *protein = _foodContents[indexPath.section].sectionData[indexPath.row].foodProtein;
+    NSString *carhdr = _foodContents[indexPath.section].sectionData[indexPath.row].foodCarhdr;
+    
+    NSString *foodContentString = [NSString stringWithFormat:@"%@/100g, %@/100g, %@/100g, %@/100g\n", calorie, fat, protein, carhdr];
+    UILabel *tmplabel;
+    
+    tmplabel = [cell.contentView.subviews objectAtIndex:0];
+    tmplabel.text = name;
+    
+    tmplabel = [cell.contentView.subviews objectAtIndex:1];
+    tmplabel.text = foodContentString;
+    
+    return cell;
+}
+
+
+#pragma mark - functions of DZ
+
+- (void)initElements {
+    _foodContents = [[NSMutableArray alloc] init];
+}
+
+- (void)request {
+    
+    // 制作section数据模型
+    for (int i = 0; i < 10; i++) {
+        DZTableSectionData *sectioni = [DZTableSectionData section];
+        sectioni.sectionData = [[NSMutableArray alloc] init];
+        
+        // 1.section名字
+        NSString *tmpfoodname = [NSString stringWithFormat:@"果蔬类 %d",i];
+        sectioni.sectionTile = tmpfoodname;
+        
+        // 2.section数据
+        for (int j = 0; j <= i+2; j++ ) {
+            DZFoodContentData *tmpContentData = [[DZFoodContentData alloc] init];
+            tmpContentData.foodCalorie = [NSString stringWithFormat:@"能量:%dKcal",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodFat = [NSString stringWithFormat:@"脂肪:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodProtein = [NSString stringWithFormat:@"蛋白质:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodCarhdr = [NSString stringWithFormat:@"碳水:%dg",j];//[tmpallnumber stringByAppendingString: tmpallunit];
+            tmpContentData.foodName = [NSString stringWithFormat:@"食物名称 %d & %d",i, j];
+            tmpContentData.like = YES;
+            [sectioni.sectionData addObject:tmpContentData];
+        }
+        [_foodContents addObject:sectioni];
+    }
+}
+
+- (void)likeIt:(UITapGestureRecognizer *) gestureRecognizer {
+    UIImageView *likeview = (UIImageView *)[gestureRecognizer view];
+    likeview.image = [UIImage imageNamed:@"likeit"];
+}
+
 
 @end

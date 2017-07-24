@@ -35,7 +35,7 @@
     // set text font
     textField.font = [UIFont systemFontOfSize:12];
     textField.textColor = AppLoginTextColor;
-    textField.textAlignment = UITextAlignmentCenter;
+    textField.textAlignment = NSTextAlignmentCenter;
     
     // set keyboard
     textField.keyboardType = UIKeyboardTypeDefault;

@@ -10,6 +10,7 @@
 
 @interface UILabel (DefaultTableLabel)
 
-+ (UILabel *)defaultTableLabelWithText:(NSString *) text yPos:(float) y isBold:(BOOL) bold;
++ (UILabel *)DZDefaultTableLabelWithText:(NSString *)text yPos:(float)y Height:(float)height IsBold:(BOOL)bold;
++ (UILabel *)DZDefaultTableDetailLabelWithText:(NSString *)text yPos:(float)y Height:(float)height IsBold:(BOOL)bold;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface UIView (FooterLine)
 
-+(UIView *) footerLineWithX:(float) x Y:(float) y;
++(UIView *) SeperatorLineWithX:(float) x Y:(float) y;
 
 @end

@@ -10,6 +10,7 @@
 
 @interface DZPersonalCardViewController ()
 
+
 @end
 
 @implementation DZPersonalCardViewController
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = super.pageTitle;
+    
 }
 
 - (void)didReceiveMemoryWarning {

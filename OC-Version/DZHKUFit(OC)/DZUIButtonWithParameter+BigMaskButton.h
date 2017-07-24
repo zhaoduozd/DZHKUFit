@@ -10,6 +10,6 @@
 
 @interface DZUIButtonWithParameter (BigMaskButton)
 
-+ (DZUIButtonWithParameter *) bigMaskButtonWithTitle:(NSString *) title time:(NSString *) time calorie:(NSString *) calorie imageName:(NSString *) imageName xPos:(float) x yPos:(float) y Width:(float) width Height:(float) height;
++ (DZUIButtonWithParameter *) DZExerciseItemWithTitle:(NSString *) title time:(NSString *) time calorie:(NSString *) calorie imageName:(NSString *) imageName xPos:(float) x yPos:(float) y Width:(float) width Height:(float) height;
 
 @end

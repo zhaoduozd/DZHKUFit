@@ -11,7 +11,7 @@
 @implementation UISwitch (DefaultSwitch)
 
 + (UISwitch *) defaultSwitchWithY:(float) y {
-    UISwitch *myswitch = [[UISwitch alloc] initWithFrame:CGRectMake(DZScreenW-75, 0, 0, 0)];
+    UISwitch *myswitch = [[UISwitch alloc] initWithFrame:CGRectMake(DZScreenW-75, y, 0, 0)];
     
     myswitch.transform = CGAffineTransformMakeScale(0.7, 0.7);
     myswitch.layer.anchorPoint = CGPointMake(0, 0.3);

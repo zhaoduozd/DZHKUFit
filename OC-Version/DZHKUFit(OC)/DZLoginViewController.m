@@ -128,7 +128,7 @@
 
 
 - (void)login {
-    NSLog(@"username:%@ \n password:%@", _userInput.text, _passwInput.text);
+    //NSLog(@"username:%@ \n password:%@", _userInput.text, _passwInput.text);
     
     //NSArray *array = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"user" ofType:@"plist"]];
     //NSLog(@"");

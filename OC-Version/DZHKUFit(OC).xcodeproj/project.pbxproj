@@ -8,25 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		C622AD4F1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD4E1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m */; };
-		C622AD521F1B9C8400D84D53 /* UIButton+DefaultBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */; };
 		C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD551F1BA73100D84D53 /* UIView+RecomFood.m */; };
-		C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */; };
 		C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */ = {isa = PBXBuildFile; fileRef = C65A2B2C1F131DCC00BDF446 /* DZFoodContentData.m */; };
-		C6616CAD1F1E1AA200CFB3C4 /* UIView+FooterLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CAC1F1E1AA200CFB3C4 /* UIView+FooterLine.m */; };
+		C6616CAD1F1E1AA200CFB3C4 /* UIView+SeperatorLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CAC1F1E1AA200CFB3C4 /* UIView+SeperatorLine.m */; };
 		C6616CB11F1E444100CFB3C4 /* ExerciseListData.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CB01F1E444100CFB3C4 /* ExerciseListData.m */; };
 		C6616CB41F1E481300CFB3C4 /* ExerciseTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = C6616CB31F1E481300CFB3C4 /* ExerciseTableData.m */; };
+		C66B82361F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66B82351F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.m */; };
+		C66B82391F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C66B82381F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.m */; };
+		C66B823D1F246AD400D9AF01 /* exerciseHistoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = C66B823C1F246AD400D9AF01 /* exerciseHistoryData.m */; };
+		C66B82401F2474A100D9AF01 /* DZExerciseHistoryTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = C66B823F1F2474A100D9AF01 /* DZExerciseHistoryTableData.m */; };
 		C67492C51F1F648100586B30 /* UIScrollView+ExercisePointsShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C67492C41F1F648100586B30 /* UIScrollView+ExercisePointsShow.m */; };
 		C682BFCD1F20949E00D3743B /* DZPersonalExerciseRecomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFCC1F20949E00D3743B /* DZPersonalExerciseRecomViewController.m */; };
 		C682BFD01F2094E900D3743B /* DZPersonalCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */; };
 		C682BFD31F209E0E00D3743B /* DZPersonalFoodRecomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFD21F209E0E00D3743B /* DZPersonalFoodRecomViewController.m */; };
-		C682BFD61F209E4900D3743B /* DZPersonalExerciseHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFD51F209E4900D3743B /* DZPersonalExerciseHistoryViewController.m */; };
-		C682BFD91F209E6200D3743B /* DZPersonalFoodFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFD81F209E6200D3743B /* DZPersonalFoodFavoritesViewController.m */; };
 		C682BFDC1F209E8600D3743B /* DZPersonalReminderSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFDB1F209E8600D3743B /* DZPersonalReminderSettingViewController.m */; };
 		C682BFDF1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFDE1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m */; };
 		C682BFE21F20ACEC00D3743B /* DZUIButtonWithParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFE11F20ACEC00D3743B /* DZUIButtonWithParameter.m */; };
 		C682BFE81F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFE71F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m */; };
 		C682BFEC1F20E20500D3743B /* UILabel+DefaultTableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFEB1F20E20500D3743B /* UILabel+DefaultTableLabel.m */; };
 		C682BFEF1F20E60400D3743B /* UISwitch+DefaultSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFEE1F20E60400D3743B /* UISwitch+DefaultSwitch.m */; };
+		C682BFF41F20EFA400D3743B /* UIButton+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFF31F20EFA400D3743B /* UIButton+Default.m */; };
+		C682BFFA1F20FA6E00D3743B /* DZWithDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFF91F20FA6E00D3743B /* DZWithDetailTableViewCell.m */; };
+		C682BFFD1F20FE8B00D3743B /* UITableViewCell+DZStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFFC1F20FE8B00D3743B /* UITableViewCell+DZStyles.m */; };
+		C682C0091F21075400D3743B /* DZIconsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C682C0081F21075400D3743B /* DZIconsImageView.m */; };
+		C682C00C1F2107A500D3743B /* DZIconsImageView+Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = C682C00B1F2107A500D3743B /* DZIconsImageView+Icons.m */; };
 		C6921C751F122536005EAC8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921C741F122536005EAC8F /* main.m */; };
 		C6921C781F122536005EAC8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921C771F122536005EAC8F /* AppDelegate.m */; };
 		C6921C801F122536005EAC8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6921C7F1F122536005EAC8F /* Assets.xcassets */; };
@@ -38,6 +43,9 @@
 		C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CAE1F123663005EAC8F /* DZExerciseViewController.m */; };
 		C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */; };
 		C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */; };
+		C6BAAE6C1F24BADB003B4BED /* DZReminderData.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BAAE6B1F24BADB003B4BED /* DZReminderData.m */; };
+		C6BAAE701F24CB9A003B4BED /* DZReminderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BAAE6F1F24CB9A003B4BED /* DZReminderListController.m */; };
+		C6BAAE731F24E657003B4BED /* DZEditReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6BAAE721F24E657003B4BED /* DZEditReminderTableViewController.m */; };
 		C6D629EF1F1D28D50029EF17 /* UIView+ExerciseShow.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */; };
 		C6D629F21F1D2BE20029EF17 /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D629F11F1D2BE20029EF17 /* ExerciseDetailViewController.m */; };
 		C6D64C701F1875B80052EAA9 /* UITextField+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D64C6F1F1875B80052EAA9 /* UITextField+Login.m */; };
@@ -71,20 +79,24 @@
 /* Begin PBXFileReference section */
 		C622AD4D1F1B91EA00D84D53 /* UILabel+SignLabelTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SignLabelTitle.h"; sourceTree = "<group>"; };
 		C622AD4E1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SignLabelTitle.m"; sourceTree = "<group>"; };
-		C622AD501F1B9C8400D84D53 /* UIButton+DefaultBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+DefaultBtn.h"; sourceTree = "<group>"; };
-		C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DefaultBtn.m"; sourceTree = "<group>"; };
 		C622AD541F1BA73100D84D53 /* UIView+RecomFood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RecomFood.h"; sourceTree = "<group>"; };
 		C622AD551F1BA73100D84D53 /* UIView+RecomFood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RecomFood.m"; sourceTree = "<group>"; };
-		C622AD581F1BAD8100D84D53 /* UIButton+BigMaskButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BigMaskButton.h"; sourceTree = "<group>"; };
-		C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BigMaskButton.m"; sourceTree = "<group>"; };
 		C65A2B2B1F131DCC00BDF446 /* DZFoodContentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZFoodContentData.h; sourceTree = "<group>"; };
 		C65A2B2C1F131DCC00BDF446 /* DZFoodContentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodContentData.m; sourceTree = "<group>"; };
-		C6616CAB1F1E1AA200CFB3C4 /* UIView+FooterLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FooterLine.h"; sourceTree = "<group>"; };
-		C6616CAC1F1E1AA200CFB3C4 /* UIView+FooterLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FooterLine.m"; sourceTree = "<group>"; };
+		C6616CAB1F1E1AA200CFB3C4 /* UIView+SeperatorLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SeperatorLine.h"; sourceTree = "<group>"; };
+		C6616CAC1F1E1AA200CFB3C4 /* UIView+SeperatorLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SeperatorLine.m"; sourceTree = "<group>"; };
 		C6616CAF1F1E444100CFB3C4 /* ExerciseListData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListData.h; sourceTree = "<group>"; };
 		C6616CB01F1E444100CFB3C4 /* ExerciseListData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListData.m; sourceTree = "<group>"; };
 		C6616CB21F1E481300CFB3C4 /* ExerciseTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseTableData.h; sourceTree = "<group>"; };
 		C6616CB31F1E481300CFB3C4 /* ExerciseTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseTableData.m; sourceTree = "<group>"; };
+		C66B82341F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalFoodFavoritesViewController.h; sourceTree = "<group>"; };
+		C66B82351F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalFoodFavoritesViewController.m; sourceTree = "<group>"; };
+		C66B82371F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalExerciseHistoryViewController.h; sourceTree = "<group>"; };
+		C66B82381F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalExerciseHistoryViewController.m; sourceTree = "<group>"; };
+		C66B823B1F246AD400D9AF01 /* exerciseHistoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exerciseHistoryData.h; sourceTree = "<group>"; };
+		C66B823C1F246AD400D9AF01 /* exerciseHistoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = exerciseHistoryData.m; sourceTree = "<group>"; };
+		C66B823E1F2474A100D9AF01 /* DZExerciseHistoryTableData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZExerciseHistoryTableData.h; sourceTree = "<group>"; };
+		C66B823F1F2474A100D9AF01 /* DZExerciseHistoryTableData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZExerciseHistoryTableData.m; sourceTree = "<group>"; };
 		C67492C31F1F648100586B30 /* UIScrollView+ExercisePointsShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ExercisePointsShow.h"; sourceTree = "<group>"; };
 		C67492C41F1F648100586B30 /* UIScrollView+ExercisePointsShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ExercisePointsShow.m"; sourceTree = "<group>"; };
 		C682BFCB1F20949E00D3743B /* DZPersonalExerciseRecomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalExerciseRecomViewController.h; sourceTree = "<group>"; };
@@ -93,10 +105,6 @@
 		C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalCardViewController.m; sourceTree = "<group>"; };
 		C682BFD11F209E0E00D3743B /* DZPersonalFoodRecomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalFoodRecomViewController.h; sourceTree = "<group>"; };
 		C682BFD21F209E0E00D3743B /* DZPersonalFoodRecomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalFoodRecomViewController.m; sourceTree = "<group>"; };
-		C682BFD41F209E4900D3743B /* DZPersonalExerciseHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalExerciseHistoryViewController.h; sourceTree = "<group>"; };
-		C682BFD51F209E4900D3743B /* DZPersonalExerciseHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalExerciseHistoryViewController.m; sourceTree = "<group>"; };
-		C682BFD71F209E6200D3743B /* DZPersonalFoodFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalFoodFavoritesViewController.h; sourceTree = "<group>"; };
-		C682BFD81F209E6200D3743B /* DZPersonalFoodFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalFoodFavoritesViewController.m; sourceTree = "<group>"; };
 		C682BFDA1F209E8600D3743B /* DZPersonalReminderSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalReminderSettingViewController.h; sourceTree = "<group>"; };
 		C682BFDB1F209E8600D3743B /* DZPersonalReminderSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalReminderSettingViewController.m; sourceTree = "<group>"; };
 		C682BFDD1F209EA100D3743B /* DZPersonalPhysicalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalPhysicalDataViewController.h; sourceTree = "<group>"; };
@@ -109,6 +117,16 @@
 		C682BFEB1F20E20500D3743B /* UILabel+DefaultTableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+DefaultTableLabel.m"; sourceTree = "<group>"; };
 		C682BFED1F20E60400D3743B /* UISwitch+DefaultSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISwitch+DefaultSwitch.h"; sourceTree = "<group>"; };
 		C682BFEE1F20E60400D3743B /* UISwitch+DefaultSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISwitch+DefaultSwitch.m"; sourceTree = "<group>"; };
+		C682BFF21F20EFA400D3743B /* UIButton+Default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Default.h"; sourceTree = "<group>"; };
+		C682BFF31F20EFA400D3743B /* UIButton+Default.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Default.m"; sourceTree = "<group>"; };
+		C682BFF81F20FA6E00D3743B /* DZWithDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZWithDetailTableViewCell.h; sourceTree = "<group>"; };
+		C682BFF91F20FA6E00D3743B /* DZWithDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZWithDetailTableViewCell.m; sourceTree = "<group>"; };
+		C682BFFB1F20FE8B00D3743B /* UITableViewCell+DZStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+DZStyles.h"; sourceTree = "<group>"; };
+		C682BFFC1F20FE8B00D3743B /* UITableViewCell+DZStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+DZStyles.m"; sourceTree = "<group>"; };
+		C682C0071F21075400D3743B /* DZIconsImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZIconsImageView.h; sourceTree = "<group>"; };
+		C682C0081F21075400D3743B /* DZIconsImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZIconsImageView.m; sourceTree = "<group>"; };
+		C682C00A1F2107A500D3743B /* DZIconsImageView+Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DZIconsImageView+Icons.h"; sourceTree = "<group>"; };
+		C682C00B1F2107A500D3743B /* DZIconsImageView+Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DZIconsImageView+Icons.m"; sourceTree = "<group>"; };
 		C6921C701F122536005EAC8F /* DZHKUFit(OC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DZHKUFit(OC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6921C741F122536005EAC8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C6921C761F122536005EAC8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +151,12 @@
 		C6921CB91F123828005EAC8F /* DZFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZFoodTableViewController.m; sourceTree = "<group>"; };
 		C6921CBB1F12383B005EAC8F /* DZPersonalTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalTableViewController.h; sourceTree = "<group>"; };
 		C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalTableViewController.m; sourceTree = "<group>"; };
+		C6BAAE6A1F24BADB003B4BED /* DZReminderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZReminderData.h; sourceTree = "<group>"; };
+		C6BAAE6B1F24BADB003B4BED /* DZReminderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZReminderData.m; sourceTree = "<group>"; };
+		C6BAAE6E1F24CB9A003B4BED /* DZReminderListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZReminderListController.h; sourceTree = "<group>"; };
+		C6BAAE6F1F24CB9A003B4BED /* DZReminderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZReminderListController.m; sourceTree = "<group>"; };
+		C6BAAE711F24E657003B4BED /* DZEditReminderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZEditReminderTableViewController.h; sourceTree = "<group>"; };
+		C6BAAE721F24E657003B4BED /* DZEditReminderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZEditReminderTableViewController.m; sourceTree = "<group>"; };
 		C6D629ED1F1D28D50029EF17 /* UIView+ExerciseShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ExerciseShow.h"; sourceTree = "<group>"; };
 		C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ExerciseShow.m"; sourceTree = "<group>"; };
 		C6D629F01F1D2BE20029EF17 /* ExerciseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailViewController.h; sourceTree = "<group>"; };
@@ -194,8 +218,6 @@
 		C622AD571F1BAD5D00D84D53 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C622AD581F1BAD8100D84D53 /* UIButton+BigMaskButton.h */,
-				C622AD591F1BAD8100D84D53 /* UIButton+BigMaskButton.m */,
 				C682BFE61F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.h */,
 				C682BFE71F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m */,
 			);
@@ -224,13 +246,22 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		C66B823A1F246A8300D9AF01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C66B823B1F246AD400D9AF01 /* exerciseHistoryData.h */,
+				C66B823C1F246AD400D9AF01 /* exerciseHistoryData.m */,
+				C66B823E1F2474A100D9AF01 /* DZExerciseHistoryTableData.h */,
+				C66B823F1F2474A100D9AF01 /* DZExerciseHistoryTableData.m */,
+				C6BAAE6A1F24BADB003B4BED /* DZReminderData.h */,
+				C6BAAE6B1F24BADB003B4BED /* DZReminderData.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		C682BFE91F20E1AC00D3743B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C682BFEA1F20E20500D3743B /* UILabel+DefaultTableLabel.h */,
-				C682BFEB1F20E20500D3743B /* UILabel+DefaultTableLabel.m */,
-				C682BFED1F20E60400D3743B /* UISwitch+DefaultSwitch.h */,
-				C682BFEE1F20E60400D3743B /* UISwitch+DefaultSwitch.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -242,6 +273,10 @@
 				C682BFE11F20ACEC00D3743B /* DZUIButtonWithParameter.m */,
 				C6D64C7D1F1B5CB20052EAA9 /* DZUIViewController.h */,
 				C6D64C7E1F1B5CB20052EAA9 /* DZUIViewController.m */,
+				C682BFF81F20FA6E00D3743B /* DZWithDetailTableViewCell.h */,
+				C682BFF91F20FA6E00D3743B /* DZWithDetailTableViewCell.m */,
+				C682C0071F21075400D3743B /* DZIconsImageView.h */,
+				C682C0081F21075400D3743B /* DZIconsImageView.m */,
 			);
 			name = CustomClass;
 			sourceTree = "<group>";
@@ -249,12 +284,22 @@
 		C682BFF11F20ED7600D3743B /* ClassExtension */ = {
 			isa = PBXGroup;
 			children = (
-				C622AD501F1B9C8400D84D53 /* UIButton+DefaultBtn.h */,
-				C622AD511F1B9C8400D84D53 /* UIButton+DefaultBtn.m */,
+				C682BFEA1F20E20500D3743B /* UILabel+DefaultTableLabel.h */,
+				C682BFEB1F20E20500D3743B /* UILabel+DefaultTableLabel.m */,
 				C6D629ED1F1D28D50029EF17 /* UIView+ExerciseShow.h */,
 				C6D629EE1F1D28D50029EF17 /* UIView+ExerciseShow.m */,
-				C6616CAB1F1E1AA200CFB3C4 /* UIView+FooterLine.h */,
-				C6616CAC1F1E1AA200CFB3C4 /* UIView+FooterLine.m */,
+				C6616CAB1F1E1AA200CFB3C4 /* UIView+SeperatorLine.h */,
+				C6616CAC1F1E1AA200CFB3C4 /* UIView+SeperatorLine.m */,
+				C67492C31F1F648100586B30 /* UIScrollView+ExercisePointsShow.h */,
+				C67492C41F1F648100586B30 /* UIScrollView+ExercisePointsShow.m */,
+				C682BFF21F20EFA400D3743B /* UIButton+Default.h */,
+				C682BFF31F20EFA400D3743B /* UIButton+Default.m */,
+				C682BFED1F20E60400D3743B /* UISwitch+DefaultSwitch.h */,
+				C682BFEE1F20E60400D3743B /* UISwitch+DefaultSwitch.m */,
+				C682BFFB1F20FE8B00D3743B /* UITableViewCell+DZStyles.h */,
+				C682BFFC1F20FE8B00D3743B /* UITableViewCell+DZStyles.m */,
+				C682C00A1F2107A500D3743B /* DZIconsImageView+Icons.h */,
+				C682C00B1F2107A500D3743B /* DZIconsImageView+Icons.m */,
 			);
 			name = ClassExtension;
 			sourceTree = "<group>";
@@ -341,8 +386,6 @@
 			children = (
 				C682BFF11F20ED7600D3743B /* ClassExtension */,
 				C682BFF01F20ED4E00D3743B /* CustomClass */,
-				C67492C31F1F648100586B30 /* UIScrollView+ExercisePointsShow.h */,
-				C67492C41F1F648100586B30 /* UIScrollView+ExercisePointsShow.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -386,6 +429,7 @@
 		C6921CB61F1236E7005EAC8F /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				C66B823A1F246A8300D9AF01 /* Model */,
 				C682BFE91F20E1AC00D3743B /* View */,
 				C6D64C781F1B4B260052EAA9 /* controller */,
 			);
@@ -399,6 +443,17 @@
 				C65A2B271F1317D400BDF446 /* Model */,
 			);
 			name = Food;
+			sourceTree = "<group>";
+		};
+		C6BAAE6D1F24CB6B003B4BED /* SubControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6BAAE6E1F24CB9A003B4BED /* DZReminderListController.h */,
+				C6BAAE6F1F24CB9A003B4BED /* DZReminderListController.m */,
+				C6BAAE711F24E657003B4BED /* DZEditReminderTableViewController.h */,
+				C6BAAE721F24E657003B4BED /* DZEditReminderTableViewController.m */,
+			);
+			name = SubControllers;
 			sourceTree = "<group>";
 		};
 		C6D64C741F1B4A850052EAA9 /* Login */ = {
@@ -444,6 +499,7 @@
 		C6D64C781F1B4B260052EAA9 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				C6BAAE6D1F24CB6B003B4BED /* SubControllers */,
 				C6921CBB1F12383B005EAC8F /* DZPersonalTableViewController.h */,
 				C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */,
 				C682BFCB1F20949E00D3743B /* DZPersonalExerciseRecomViewController.h */,
@@ -452,14 +508,14 @@
 				C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */,
 				C682BFD11F209E0E00D3743B /* DZPersonalFoodRecomViewController.h */,
 				C682BFD21F209E0E00D3743B /* DZPersonalFoodRecomViewController.m */,
-				C682BFD41F209E4900D3743B /* DZPersonalExerciseHistoryViewController.h */,
-				C682BFD51F209E4900D3743B /* DZPersonalExerciseHistoryViewController.m */,
-				C682BFD71F209E6200D3743B /* DZPersonalFoodFavoritesViewController.h */,
-				C682BFD81F209E6200D3743B /* DZPersonalFoodFavoritesViewController.m */,
 				C682BFDA1F209E8600D3743B /* DZPersonalReminderSettingViewController.h */,
 				C682BFDB1F209E8600D3743B /* DZPersonalReminderSettingViewController.m */,
 				C682BFDD1F209EA100D3743B /* DZPersonalPhysicalDataViewController.h */,
 				C682BFDE1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m */,
+				C66B82341F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.h */,
+				C66B82351F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.m */,
+				C66B82371F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.h */,
+				C66B82381F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -631,38 +687,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6616CB41F1E481300CFB3C4 /* ExerciseTableData.m in Sources */,
-				C682BFD61F209E4900D3743B /* DZPersonalExerciseHistoryViewController.m in Sources */,
+				C682C00C1F2107A500D3743B /* DZIconsImageView+Icons.m in Sources */,
+				C682BFFA1F20FA6E00D3743B /* DZWithDetailTableViewCell.m in Sources */,
 				C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */,
 				C6D64C731F1B48200052EAA9 /* DZSignInViewController.m in Sources */,
 				D2C347521F1713AE00E67C18 /* DZLoginViewController.m in Sources */,
 				C682BFEC1F20E20500D3743B /* UILabel+DefaultTableLabel.m in Sources */,
-				C6616CAD1F1E1AA200CFB3C4 /* UIView+FooterLine.m in Sources */,
-				C622AD5A1F1BAD8100D84D53 /* UIButton+BigMaskButton.m in Sources */,
+				C6616CAD1F1E1AA200CFB3C4 /* UIView+SeperatorLine.m in Sources */,
 				C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */,
 				C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */,
 				C6D629F21F1D2BE20029EF17 /* ExerciseDetailViewController.m in Sources */,
+				C6BAAE701F24CB9A003B4BED /* DZReminderListController.m in Sources */,
 				C682BFDC1F209E8600D3743B /* DZPersonalReminderSettingViewController.m in Sources */,
 				C6616CB11F1E444100CFB3C4 /* ExerciseListData.m in Sources */,
+				C682BFF41F20EFA400D3743B /* UIButton+Default.m in Sources */,
+				C6BAAE731F24E657003B4BED /* DZEditReminderTableViewController.m in Sources */,
 				C6921CA81F122ED0005EAC8F /* DZMainTabBarViewController.m in Sources */,
 				C682BFD01F2094E900D3743B /* DZPersonalCardViewController.m in Sources */,
 				C65A2B2D1F131DCC00BDF446 /* DZFoodContentData.m in Sources */,
+				C66B82391F2465A800D9AF01 /* DZPersonalExerciseHistoryViewController.m in Sources */,
 				D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */,
 				C6D629EF1F1D28D50029EF17 /* UIView+ExerciseShow.m in Sources */,
-				C682BFD91F209E6200D3743B /* DZPersonalFoodFavoritesViewController.m in Sources */,
 				C6D64C821F1B5F9C0052EAA9 /* UITextField+SignIn.m in Sources */,
 				C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */,
 				C67492C51F1F648100586B30 /* UIScrollView+ExercisePointsShow.m in Sources */,
 				C6D64C7F1F1B5CB20052EAA9 /* DZUIViewController.m in Sources */,
 				C6D64C701F1875B80052EAA9 /* UITextField+Login.m in Sources */,
-				C622AD521F1B9C8400D84D53 /* UIButton+DefaultBtn.m in Sources */,
 				C682BFE21F20ACEC00D3743B /* DZUIButtonWithParameter.m in Sources */,
+				C66B82361F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.m in Sources */,
 				D26092A91F135AAB00AB0C60 /* DZTableSectionData.m in Sources */,
+				C66B82401F2474A100D9AF01 /* DZExerciseHistoryTableData.m in Sources */,
+				C66B823D1F246AD400D9AF01 /* exerciseHistoryData.m in Sources */,
 				C682BFDF1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m in Sources */,
 				C6921C781F122536005EAC8F /* AppDelegate.m in Sources */,
+				C682BFFD1F20FE8B00D3743B /* UITableViewCell+DZStyles.m in Sources */,
+				C6BAAE6C1F24BADB003B4BED /* DZReminderData.m in Sources */,
 				C682BFEF1F20E60400D3743B /* UISwitch+DefaultSwitch.m in Sources */,
 				C6921C751F122536005EAC8F /* main.m in Sources */,
 				C682BFCD1F20949E00D3743B /* DZPersonalExerciseRecomViewController.m in Sources */,
 				C682BFD31F209E0E00D3743B /* DZPersonalFoodRecomViewController.m in Sources */,
+				C682C0091F21075400D3743B /* DZIconsImageView.m in Sources */,
 				C6921CAB1F12305C005EAC8F /* DZRecomViewController.m in Sources */,
 				C682BFE81F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m in Sources */,
 				C622AD4F1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m in Sources */,

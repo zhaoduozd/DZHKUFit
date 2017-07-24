@@ -109,7 +109,7 @@
         
         ExerciseListData *btn = [exerciseBtns objectAtIndex:i];
         
-        DZUIButtonWithParameter *tmpButton = [DZUIButtonWithParameter bigMaskButtonWithTitle:btn.exerciseName time: btn.exerciseTime calorie:btn.exerciseCalorie imageName:btn.exerciseImage xPos:btnX yPos:btnY Width:btnW Height:btnH];
+        DZUIButtonWithParameter *tmpButton = [DZUIButtonWithParameter DZExerciseItemWithTitle:btn.exerciseName time: btn.exerciseTime calorie:btn.exerciseCalorie imageName:btn.exerciseImage xPos:btnX yPos:btnY Width:btnW Height:btnH];
         
         tmpButton.parameters = [[NSMutableDictionary alloc] init];
         [tmpButton.parameters setObject:btn.exerciseName forKey:@"pageTitle"];

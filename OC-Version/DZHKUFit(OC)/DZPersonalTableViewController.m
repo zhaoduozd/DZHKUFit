@@ -12,9 +12,9 @@
 #import "DZPersonalFoodRecomViewController.h"
 #import "DZPersonalPhysicalDataViewController.h"
 #import "DZPersonalExerciseHistoryViewController.h"
-#import "DZPersonalFoodFavoritesViewController.h"
 #import "DZPersonalReminderSettingViewController.h"
 #import "DZLoginViewController.h"
+#import "DZPersonalFoodFavoritesViewController.h"
 
 
 @interface DZPersonalTableViewController ()
@@ -124,7 +124,7 @@
             
             username.textColor = [UIColor whiteColor];
             username.font = [UIFont boldSystemFontOfSize:16];
-            username.textAlignment = UITextAlignmentLeft;
+            username.textAlignment = NSTextAlignmentCenter;
             username.text = tmp[0];
             
             cell.backgroundColor = AppDefaultBarTintColor;

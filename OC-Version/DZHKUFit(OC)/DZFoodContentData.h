@@ -15,5 +15,6 @@
 @property(nonatomic, copy) NSString *foodFat;
 @property(nonatomic, copy) NSString *foodProtein;
 @property(nonatomic, copy) NSString *foodCarhdr;
+@property(nonatomic, assign) BOOL like;
 
 @end

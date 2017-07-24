@@ -1,13 +1,15 @@
 //
-//  DZPersonalFoodFavoratesViewController.h
+//  DZPersonalFoodFavoritesViewController.h
 //  DZHKUFit(OC)
 //
-//  Created by Dora Zhao on 20/7/2017.
+//  Created by Dora Zhao on 23/7/2017.
 //  Copyright © 2017 Duo Zhao. All rights reserved.
 //
 
-#import "DZUIViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface DZPersonalFoodFavoritesViewController : DZUIViewController
+@interface DZPersonalFoodFavoritesViewController : UITableViewController
+
+@property(nonatomic, copy) NSString *pageTitle;
 
 @end

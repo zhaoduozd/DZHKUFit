@@ -10,7 +10,7 @@
 
 @implementation DZUIButtonWithParameter (BigMaskButton)
 
-+ (DZUIButtonWithParameter *) bigMaskButtonWithTitle:(NSString *) title time:(NSString *) time calorie:(NSString *) calorie imageName:(NSString *) imageName xPos:(float) x yPos:(float) y Width:(float) width Height:(float) height {
++ (DZUIButtonWithParameter *) DZExerciseItemWithTitle:(NSString *) title time:(NSString *) time calorie:(NSString *) calorie imageName:(NSString *) imageName xPos:(float) x yPos:(float) y Width:(float) width Height:(float) height {
     DZUIButtonWithParameter *button = [[DZUIButtonWithParameter alloc] init];
     UILabel *btnTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, height/2-20, width, 26)];
     UILabel *btnTime = [[UILabel alloc] initWithFrame:CGRectMake(width/2, height-40, width/2, 26)];

@@ -7,6 +7,7 @@
 //
 
 #import "UIScrollView+ExercisePointsShow.h"
+#import "UIButton+Default.h"
 
 @implementation UIScrollView (ExercisePointsShow)
 
@@ -15,7 +16,7 @@
     
     UIScrollView *rootView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, y, DZScreenW+3, 180)];
     UIView *seperateLine = [[UIView alloc] initWithFrame:CGRectMake(15, 36, DZScreenW-30, 1)];
-    UIButton *voice = [UIButton DZDefaultBtnWithWidth:100 Height:20 xPos:DZScreenW-115 yPos:10 Title:@"开启音频讲解"];
+    UIButton *voice = [UIButton DZDefaultLineBtnWithWidth:100 Height:20 xPos:DZScreenW-115 yPos:10 Title:@"开启音频讲解"];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 20)];
     UILabel *contentDetail = [[UILabel alloc] initWithFrame:CGRectMake(15, 38, DZScreenW-30, 100)];
     CGSize size = [contentDetail sizeThatFits:CGSizeMake(contentDetail.frame.size.width, MAXFLOAT)];
@@ -47,17 +48,6 @@
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:range];
     [attributedString addAttribute:NSFontAttributeName value:contentDetail.font range:range];
     contentDetail.attributedText = attributedString;
-
-    
-    
-    voice.titleLabel.font = [UIFont systemFontOfSize:12];
-    [voice setTitleColor:AppDefaultColor forState:UIControlStateNormal];
-    voice.backgroundColor = AppDefaultBarTintColor;
-    voice.layer.borderColor = AppDefaultColor.CGColor;
-    voice.layer.borderWidth = 1;
-    [voice.layer setCornerRadius:4.0];
-    
-    
     
     [rootView addSubview:title];
     [rootView addSubview:voice];
