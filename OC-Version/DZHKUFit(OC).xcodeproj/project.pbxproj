@@ -21,7 +21,6 @@
 		C682BFCD1F20949E00D3743B /* DZPersonalExerciseRecomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFCC1F20949E00D3743B /* DZPersonalExerciseRecomViewController.m */; };
 		C682BFD01F2094E900D3743B /* DZPersonalCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */; };
 		C682BFD31F209E0E00D3743B /* DZPersonalFoodRecomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFD21F209E0E00D3743B /* DZPersonalFoodRecomViewController.m */; };
-		C682BFDC1F209E8600D3743B /* DZPersonalReminderSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFDB1F209E8600D3743B /* DZPersonalReminderSettingViewController.m */; };
 		C682BFDF1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFDE1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m */; };
 		C682BFE21F20ACEC00D3743B /* DZUIButtonWithParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFE11F20ACEC00D3743B /* DZUIButtonWithParameter.m */; };
 		C682BFE81F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C682BFE71F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m */; };
@@ -53,6 +52,9 @@
 		C6D64C7C1F1B57030052EAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D64C7B1F1B57030052EAA9 /* Main.storyboard */; };
 		C6D64C7F1F1B5CB20052EAA9 /* DZUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D64C7E1F1B5CB20052EAA9 /* DZUIViewController.m */; };
 		C6D64C821F1B5F9C0052EAA9 /* UITextField+SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = C6D64C811F1B5F9C0052EAA9 /* UITextField+SignIn.m */; };
+		C6DEC0741F2707C800FF9872 /* DZReminderController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC0731F2707C800FF9872 /* DZReminderController.m */; };
+		C6DEC0771F270F5C00FF9872 /* DZUISwitchWithParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC0761F270F5C00FF9872 /* DZUISwitchWithParameter.m */; };
+		C6DEC07A1F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C6DEC0791F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.m */; };
 		D26092A91F135AAB00AB0C60 /* DZTableSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = D26092A81F135AAB00AB0C60 /* DZTableSectionData.m */; };
 		D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C3474A1F170CD100E67C18 /* UIButton+Mask.m */; };
 		D2C3474E1F17130000E67C18 /* user.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C3474D1F17130000E67C18 /* user.plist */; };
@@ -105,8 +107,6 @@
 		C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalCardViewController.m; sourceTree = "<group>"; };
 		C682BFD11F209E0E00D3743B /* DZPersonalFoodRecomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalFoodRecomViewController.h; sourceTree = "<group>"; };
 		C682BFD21F209E0E00D3743B /* DZPersonalFoodRecomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalFoodRecomViewController.m; sourceTree = "<group>"; };
-		C682BFDA1F209E8600D3743B /* DZPersonalReminderSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalReminderSettingViewController.h; sourceTree = "<group>"; };
-		C682BFDB1F209E8600D3743B /* DZPersonalReminderSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalReminderSettingViewController.m; sourceTree = "<group>"; };
 		C682BFDD1F209EA100D3743B /* DZPersonalPhysicalDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZPersonalPhysicalDataViewController.h; sourceTree = "<group>"; };
 		C682BFDE1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZPersonalPhysicalDataViewController.m; sourceTree = "<group>"; };
 		C682BFE01F20ACEC00D3743B /* DZUIButtonWithParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUIButtonWithParameter.h; sourceTree = "<group>"; };
@@ -170,6 +170,12 @@
 		C6D64C7E1F1B5CB20052EAA9 /* DZUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUIViewController.m; sourceTree = "<group>"; };
 		C6D64C801F1B5F9C0052EAA9 /* UITextField+SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+SignIn.h"; sourceTree = "<group>"; };
 		C6D64C811F1B5F9C0052EAA9 /* UITextField+SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+SignIn.m"; sourceTree = "<group>"; };
+		C6DEC0721F2707C800FF9872 /* DZReminderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZReminderController.h; sourceTree = "<group>"; };
+		C6DEC0731F2707C800FF9872 /* DZReminderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZReminderController.m; sourceTree = "<group>"; };
+		C6DEC0751F270F5C00FF9872 /* DZUISwitchWithParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZUISwitchWithParameter.h; sourceTree = "<group>"; };
+		C6DEC0761F270F5C00FF9872 /* DZUISwitchWithParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZUISwitchWithParameter.m; sourceTree = "<group>"; };
+		C6DEC0781F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DZUISwitchWithParameter+DefaultSwitch.h"; sourceTree = "<group>"; };
+		C6DEC0791F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DZUISwitchWithParameter+DefaultSwitch.m"; sourceTree = "<group>"; };
 		D26092A71F135AAB00AB0C60 /* DZTableSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTableSectionData.h; sourceTree = "<group>"; };
 		D26092A81F135AAB00AB0C60 /* DZTableSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTableSectionData.m; sourceTree = "<group>"; };
 		D2C347491F170CD100E67C18 /* UIButton+Mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Mask.h"; sourceTree = "<group>"; };
@@ -222,6 +228,15 @@
 				C682BFE71F20B29F00D3743B /* DZUIButtonWithParameter+BigMaskButton.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		C6346BF51F3173F2005A7A87 /* CardControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C682BFCE1F2094E900D3743B /* DZPersonalCardViewController.h */,
+				C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */,
+			);
+			name = CardControllers;
 			sourceTree = "<group>";
 		};
 		C65A2B271F1317D400BDF446 /* Model */ = {
@@ -277,6 +292,8 @@
 				C682BFF91F20FA6E00D3743B /* DZWithDetailTableViewCell.m */,
 				C682C0071F21075400D3743B /* DZIconsImageView.h */,
 				C682C0081F21075400D3743B /* DZIconsImageView.m */,
+				C6DEC0751F270F5C00FF9872 /* DZUISwitchWithParameter.h */,
+				C6DEC0761F270F5C00FF9872 /* DZUISwitchWithParameter.m */,
 			);
 			name = CustomClass;
 			sourceTree = "<group>";
@@ -300,6 +317,8 @@
 				C682BFFC1F20FE8B00D3743B /* UITableViewCell+DZStyles.m */,
 				C682C00A1F2107A500D3743B /* DZIconsImageView+Icons.h */,
 				C682C00B1F2107A500D3743B /* DZIconsImageView+Icons.m */,
+				C6DEC0781F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.h */,
+				C6DEC0791F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.m */,
 			);
 			name = ClassExtension;
 			sourceTree = "<group>";
@@ -448,10 +467,6 @@
 		C6BAAE6D1F24CB6B003B4BED /* SubControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C6BAAE6E1F24CB9A003B4BED /* DZReminderListController.h */,
-				C6BAAE6F1F24CB9A003B4BED /* DZReminderListController.m */,
-				C6BAAE711F24E657003B4BED /* DZEditReminderTableViewController.h */,
-				C6BAAE721F24E657003B4BED /* DZEditReminderTableViewController.m */,
 			);
 			name = SubControllers;
 			sourceTree = "<group>";
@@ -499,17 +514,15 @@
 		C6D64C781F1B4B260052EAA9 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				C6346BF51F3173F2005A7A87 /* CardControllers */,
+				C6DEC0711F27070B00FF9872 /* RemindeControllers */,
 				C6BAAE6D1F24CB6B003B4BED /* SubControllers */,
 				C6921CBB1F12383B005EAC8F /* DZPersonalTableViewController.h */,
 				C6921CBC1F12383B005EAC8F /* DZPersonalTableViewController.m */,
 				C682BFCB1F20949E00D3743B /* DZPersonalExerciseRecomViewController.h */,
 				C682BFCC1F20949E00D3743B /* DZPersonalExerciseRecomViewController.m */,
-				C682BFCE1F2094E900D3743B /* DZPersonalCardViewController.h */,
-				C682BFCF1F2094E900D3743B /* DZPersonalCardViewController.m */,
 				C682BFD11F209E0E00D3743B /* DZPersonalFoodRecomViewController.h */,
 				C682BFD21F209E0E00D3743B /* DZPersonalFoodRecomViewController.m */,
-				C682BFDA1F209E8600D3743B /* DZPersonalReminderSettingViewController.h */,
-				C682BFDB1F209E8600D3743B /* DZPersonalReminderSettingViewController.m */,
 				C682BFDD1F209EA100D3743B /* DZPersonalPhysicalDataViewController.h */,
 				C682BFDE1F209EA100D3743B /* DZPersonalPhysicalDataViewController.m */,
 				C66B82341F245F9800D9AF01 /* DZPersonalFoodFavoritesViewController.h */,
@@ -540,6 +553,19 @@
 				C622AD4E1F1B91EA00D84D53 /* UILabel+SignLabelTitle.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		C6DEC0711F27070B00FF9872 /* RemindeControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C6BAAE6E1F24CB9A003B4BED /* DZReminderListController.h */,
+				C6BAAE6F1F24CB9A003B4BED /* DZReminderListController.m */,
+				C6BAAE711F24E657003B4BED /* DZEditReminderTableViewController.h */,
+				C6BAAE721F24E657003B4BED /* DZEditReminderTableViewController.m */,
+				C6DEC0721F2707C800FF9872 /* DZReminderController.h */,
+				C6DEC0731F2707C800FF9872 /* DZReminderController.m */,
+			);
+			name = RemindeControllers;
 			sourceTree = "<group>";
 		};
 		D2C3474C1F1712DE00E67C18 /* plist */ = {
@@ -692,13 +718,14 @@
 				C6921CBA1F123828005EAC8F /* DZFoodTableViewController.m in Sources */,
 				C6D64C731F1B48200052EAA9 /* DZSignInViewController.m in Sources */,
 				D2C347521F1713AE00E67C18 /* DZLoginViewController.m in Sources */,
+				C6DEC0741F2707C800FF9872 /* DZReminderController.m in Sources */,
 				C682BFEC1F20E20500D3743B /* UILabel+DefaultTableLabel.m in Sources */,
 				C6616CAD1F1E1AA200CFB3C4 /* UIView+SeperatorLine.m in Sources */,
 				C6921CAF1F123663005EAC8F /* DZExerciseViewController.m in Sources */,
 				C6921CBD1F12383B005EAC8F /* DZPersonalTableViewController.m in Sources */,
 				C6D629F21F1D2BE20029EF17 /* ExerciseDetailViewController.m in Sources */,
 				C6BAAE701F24CB9A003B4BED /* DZReminderListController.m in Sources */,
-				C682BFDC1F209E8600D3743B /* DZPersonalReminderSettingViewController.m in Sources */,
+				C6DEC07A1F270FC600FF9872 /* DZUISwitchWithParameter+DefaultSwitch.m in Sources */,
 				C6616CB11F1E444100CFB3C4 /* ExerciseListData.m in Sources */,
 				C682BFF41F20EFA400D3743B /* UIButton+Default.m in Sources */,
 				C6BAAE731F24E657003B4BED /* DZEditReminderTableViewController.m in Sources */,
@@ -709,6 +736,7 @@
 				D2C3474B1F170CD100E67C18 /* UIButton+Mask.m in Sources */,
 				C6D629EF1F1D28D50029EF17 /* UIView+ExerciseShow.m in Sources */,
 				C6D64C821F1B5F9C0052EAA9 /* UITextField+SignIn.m in Sources */,
+				C6DEC0771F270F5C00FF9872 /* DZUISwitchWithParameter.m in Sources */,
 				C622AD561F1BA73100D84D53 /* UIView+RecomFood.m in Sources */,
 				C67492C51F1F648100586B30 /* UIScrollView+ExercisePointsShow.m in Sources */,
 				C6D64C7F1F1B5CB20052EAA9 /* DZUIViewController.m in Sources */,

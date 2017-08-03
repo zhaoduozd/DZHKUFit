@@ -28,6 +28,8 @@
 #import "DZIconsImageView+Icons.h"
 
 #import "UISwitch+DefaultSwitch.h"
+#import "DZUISwitchWithParameter.h"
+#import "DZUISwitchWithParameter+DefaultSwitch.h"
 
 #define DZScreenW [UIScreen mainScreen].bounds.size.width
 #define DZScreenH [UIScreen mainScreen].bounds.size.height

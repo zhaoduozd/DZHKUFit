@@ -12,7 +12,7 @@
 #import "DZPersonalFoodRecomViewController.h"
 #import "DZPersonalPhysicalDataViewController.h"
 #import "DZPersonalExerciseHistoryViewController.h"
-#import "DZPersonalReminderSettingViewController.h"
+#import "DZReminderController.h"
 #import "DZLoginViewController.h"
 #import "DZPersonalFoodFavoritesViewController.h"
 
@@ -233,7 +233,7 @@
 }
 
 - (void) goToReminderSettting {
-    DZPersonalReminderSettingViewController *vc = [[DZPersonalReminderSettingViewController alloc] init];
+    DZReminderController *vc = [[DZReminderController alloc] init];
     vc.pageTitle = @"设置运动提醒";
     [self.navigationController pushViewController:vc animated:YES];
 }

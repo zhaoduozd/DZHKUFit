@@ -7,7 +7,7 @@
 //
 
 #import "DZReminderListController.h"
-#import "DZReminderData.h"
+#import "DZEditReminderTableViewController.h"
 
 @interface DZReminderListController ()
 
@@ -15,6 +15,7 @@
 
 @implementation DZReminderListController {
     NSInteger x;
+    NSString *filePath;
 }
 
 - (void)viewDidLoad {
@@ -48,18 +49,28 @@
     static NSString *identifer = @"reminderlisttabelcell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+    NSMutableDictionary *tmpcell = _reminderListData[indexPath.row+1];
     
     if (cell == nil) {
         cell = [UITableViewCell DZDetailCellWithTextHeight:30 DetailHeight:26 TextSize:25 DetailSize:15 Text:@"" Detail:@"" Reuseid:identifer];
         
         UIView *footerLine = [UIView SeperatorLineWithX:15 Y:55];
-        UISwitch *switchview = [UISwitch defaultSwitchWithY:5];
+        DZUISwitchWithParameter *switchview = [DZUISwitchWithParameter defaultSwitchWithY:5];
+        DZUIButtonWithParameter *btn = [[DZUIButtonWithParameter alloc] init];
         
+        if ([[tmpcell objectForKey:@"remidnerOn"] isEqual: @"ON"]) {
+            [switchview setOn:YES];
+        } else {
+            [switchview setOn:NO];
+        }
+        
+        [switchview.parameters setObject:[[NSNumber alloc] initWithInteger:indexPath.row] forKey:@"switchNo"];
+        [switchview addTarget:self action:@selector(SetOnOffReminder:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [btn.parameters setObject:[[NSNumber alloc] initWithInteger:indexPath.row+1] forKey:@"reminderNo"];
         [cell addSubview:footerLine];
         [cell addSubview:switchview];
     }
-    
-    NSMutableDictionary *tmpcell = _reminderListData[indexPath.row+1];
     
     NSString *clock = [tmpcell objectForKey:@"time"];
     NSString *daysString = [tmpcell objectForKey:@"daysString"];
@@ -80,35 +91,59 @@
 }
 
 
-#pragma Dora functions
+#pragma mark - Dora functions
 
 - (void) requestData {
     
-    _reminderListData = [[NSMutableArray alloc] init];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *filePath;
-    
     filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
-    
-    if (![defaults boolForKey:@"reminderList"]) {
-        
-        NSMutableDictionary *defaultReminder = [[NSMutableDictionary alloc] init];
-        [defaultReminder setObject:@"" forKey:@"time"];
-        [defaultReminder setObject:@[@NO, @NO, @NO, @NO, @NO, @NO, @NO] forKey:@"days"];
-        [defaultReminder setObject:@[@NO, @NO, @NO, @NO] forKey:@"labels"];
-        [defaultReminder setObject:@"OFF" forKey:@"switchOn"];
-        
-        [_reminderListData addObject:defaultReminder];
-        [_reminderListData writeToFile:filePath atomically:YES];
-        
-        [defaults setBool:YES forKey:@"reminderList"];
-    }
     
     _reminderListData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
     if (_reminderListData.count == 1) {
         self.view.hidden = YES;
     }
 }
+
+
+
+
+#pragma mark - event handlers
+
+- (void) SetOnOffReminder:(id) sender {
+    DZUISwitchWithParameter *switchview = (DZUISwitchWithParameter *)sender;
+    NSInteger switchNo = [[switchview.parameters objectForKey:@"switchNo"] integerValue];
+    NSMutableDictionary *tmpReminder = [[NSMutableDictionary alloc] initWithDictionary:[self.reminderListData objectAtIndex:switchNo]];
+    NSString *reminderOn;
+    
+    if (switchview.isOn) {
+        reminderOn = @"ON";
+        [self CreateReminder];
+    } else {
+        reminderOn = @"OFF";
+        [self CancelReinder];
+    }
+    
+    [tmpReminder setObject:reminderOn forKey:@"reminderON"];
+    
+}
+
+- (void) GoToModifyReminder:(id) sender {
+    DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
+    DZEditReminderTableViewController *vc = [[DZEditReminderTableViewController alloc] init];
+    
+    vc.reminderNo = [[btn.parameters objectForKey:@"reminderNo"] integerValue];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void) CancelReinder {
+    
+}
+
+- (void) CreateReminder {
+    
+}
+
+
 
 
 @end

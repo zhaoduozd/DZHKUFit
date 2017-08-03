@@ -1,26 +1,26 @@
 //
-//  DZPersonalReminderSettingViewController.m
+//  DZReminderController.m
 //  DZHKUFit(OC)
 //
-//  Created by Dora Zhao on 20/7/2017.
+//  Created by Dora Zhao on 25/7/2017.
 //  Copyright © 2017 Duo Zhao. All rights reserved.
 //
 
-#import "DZPersonalReminderSettingViewController.h"
+#import "DZReminderController.h"
 #import "UILabel+DefaultTableLabel.h"
 #import "UISwitch+DefaultSwitch.h"
 #import "DZReminderData.h"
 #import "DZReminderListController.h"
 #import "DZEditReminderTableViewController.h"
 
-@interface DZPersonalReminderSettingViewController ()
+@interface DZReminderController ()
+@property(nonatomic, strong) NSString *reminderOn;
 @property(nonatomic, strong) UISwitch *reminderSwitch;
 @property(nonatomic, strong) DZUIButtonWithParameter *addReminderButton;
 @property(nonatomic, strong) DZReminderListController *reminderList;
-@property(nonatomic, strong) NSString *reminderOn;
 @end
 
-@implementation DZPersonalReminderSettingViewController {
+@implementation DZReminderController{
     float reminderSwitchWidth;
     float reminderSwitchHeight;
     float reminderSwitchCellHeight;
@@ -36,11 +36,41 @@
     backButtonItem.title = @"";
     self.navigationItem.backBarButtonItem = backButtonItem;
     
-    [self initValues];
-    [self initUI];
+    [self CreateReminderPlist];
+    [self InitValues];
+    [self InitUI];
+    
 }
 
-- (void) initValues {
+- (void) CreateReminderPlist {
+    
+    NSString *filePath;
+    
+    filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"/reminder.plist"];
+    
+    if (![defaults boolForKey:@"reminderList"]) {
+        NSMutableArray *reminderDataList = [[NSMutableArray alloc] init];
+        NSMutableArray *days = [[NSMutableArray alloc] initWithObjects:@NO, @NO, @NO, @NO, @NO, @NO, @NO, nil];
+        NSMutableArray *labels = [[NSMutableArray alloc] initWithObjects:@"清晨舒展", @"傍晚跑步", nil];
+        NSString *labelSelected = @"";
+        NSString *daysSelected = @"";
+        NSMutableDictionary *defaultReminder = [[NSMutableDictionary alloc] init];
+        
+        [defaultReminder setObject:@"" forKey:@"time"];
+        [defaultReminder setObject:days forKey:@"days"];
+        [defaultReminder setObject:labels forKey:@"labels"];
+        [defaultReminder setObject:labelSelected forKey:@"labelSlected"];
+        [defaultReminder setObject:daysSelected forKey:@"daysSeleced"];
+        [defaultReminder setObject:@"OFF" forKey:@"reminderOn"];
+        
+        [reminderDataList addObject:defaultReminder];
+        [reminderDataList writeToFile:filePath atomically:YES];
+        
+        [defaults setBool:YES forKey:@"reminderList"];
+    }
+}
+
+- (void) InitValues {
     reminderSwitchCellHeight = 40;
     reminderCellHeight = 50;
     reminderSwitchHeight = 20;
@@ -49,12 +79,16 @@
     _reminderOn = @"reminderOn";
 }
 
-- (void) initUI {
-    [self initReminderSwitchCell];
-    [self initReminders];
+- (void) InitUI {
+    [self InitReminderSwitchCell];
+    [self InitReminders];
 }
 
-- (void) initReminderSwitchCell {
+
+
+/**  Init Reminder Switch Cell  */
+
+- (void) InitReminderSwitchCell {
     UIView *footerLine = [UIView SeperatorLineWithX:0 Y:0];
     UIView *headerLine = [UIView SeperatorLineWithX:0 Y:reminderSwitchCellHeight];
     UIView *reminderSwitchCell = [[UIView alloc] initWithFrame:CGRectMake(0, 10, DZScreenW, reminderSwitchCellHeight)];
@@ -66,13 +100,13 @@
     [reminderSwitchCell addSubview:headerLine];
     [reminderSwitchCell addSubview:label];
     
-    [self initReminderSwitch];
+    [self InitReminderSwitch];
     [reminderSwitchCell addSubview:_reminderSwitch];
     
     [self.view addSubview:reminderSwitchCell];
 }
 
-- (void) initReminderSwitch {
+- (void) InitReminderSwitch {
     defaults = [NSUserDefaults standardUserDefaults];
     _reminderSwitch = [UISwitch defaultSwitchWithY:0];
     
@@ -86,16 +120,11 @@
     [_reminderSwitch addTarget:self action:@selector(ReminderSwitchOnOff:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void) initReminderButton {
-    _addReminderButton = [DZUIButtonWithParameter DZParameterLineBtnWithWidth:DZScreenW/3 Height:30 xPos:DZScreenW/3 yPos:70 Title:@"+ 添加运动提醒"];
-    [_addReminderButton.parameters setObject:[[NSNumber alloc] initWithInteger:0] forKey:@"reminderNo"];
-    [_addReminderButton addTarget:self action:@selector(GoToCreateReminder:) forControlEvents:UIControlEventTouchUpInside];
+
+/**  Init Reminder  */
+
+- (void) InitReminders {
     
-    [self.view addSubview:_addReminderButton];
-}
-
-- (void) initReminders {
-
     if (!_reminderSwitch.isOn) {
         return;
     }
@@ -110,7 +139,7 @@
         return;
     }
     
-    [self initReminderButton];
+    [self InitReminderButton];
     
     _reminderList = [[DZReminderListController alloc] init];
     
@@ -130,12 +159,24 @@
     }
 }
 
+- (void) InitReminderButton {
+    _addReminderButton = [DZUIButtonWithParameter DZParameterLineBtnWithWidth:DZScreenW/3 Height:30 xPos:DZScreenW/3 yPos:70 Title:@"+ 添加运动提醒"];
+    [_addReminderButton.parameters setObject:[[NSNumber alloc] initWithInteger:0] forKey:@"reminderNo"];
+    [_addReminderButton addTarget:self action:@selector(GoToCreateReminder:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:_addReminderButton];
+}
+
+
+
+#pragma makr - event handlers
+
 - (void) ReminderSwitchOnOff:(id) sender {
     UISwitch *switchsender = (UISwitch *)sender;
     
     
     if (switchsender.isOn) {
-        [self initReminders];
+        [self InitReminders];
         [defaults setBool:YES forKey:_reminderOn];
     } else {
         _reminderList.view.hidden = YES;
@@ -149,7 +190,9 @@
 - (void) GoToCreateReminder:(id) sender {
     DZUIButtonWithParameter *btn = (DZUIButtonWithParameter *)sender;
     DZEditReminderTableViewController *vc = [[DZEditReminderTableViewController alloc] init];
+    
     vc.reminderNo = [[btn.parameters objectForKey:@"reminderNo"] integerValue];
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
